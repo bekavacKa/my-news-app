@@ -1,0 +1,24 @@
+@import '../../Assets/Scss/variables.scss';
+@import '../../Assets/Scss/mixins.scss';
+
+.news-notice-w{
+    background-color: $primaryIconColor;
+    padding: 10px 30px;
+    .news-notice-content{
+        @include my-flex(space-between, row, center);
+        color: $secondaryBack;
+        width: 80%;
+        margin: 0 auto;
+        .content-buttons{
+            button{
+                &:first-child{
+                    @include my-button($secondaryBack, $primaryFontColor);
+                }
+                &:nth-child(2){
+                    @include my-button(transparent, $secondaryBack);
+                    text-transform: capitalize;
+                }
+            }
+        }
+    }
+}

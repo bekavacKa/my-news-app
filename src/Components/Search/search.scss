@@ -1,0 +1,36 @@
+@import '../../Assets/Scss/variables.scss';
+@import '../../Assets/Scss/mixins.scss';
+
+.search-w{
+    width: 725px;
+    border-radius: 10px;
+    background-color: $secondaryBack;
+    padding: 5px;
+    margin: 0 15px;
+    @include my-flex(space-between, row, center);
+    .search-icon-input{
+        @include my-flex(flex-start, row, center);
+        flex: 1;
+        .search-icon{
+            margin-left: 15px;
+            color: $secondaryIconColor;
+        }
+        .search-input{
+            border: none;
+            flex: 1;
+            margin: 0 15px;
+            font-size: 15px;
+            outline: none;
+            &::placeholder{
+                color: $secondaryIconColor;
+            }
+            &:focus{
+                border: none;
+            }
+        }
+    }
+    .search-button{
+        // align-self: end;
+        @include my-button($primaryIconColor, $secondaryBack);
+    }
+}

@@ -1,0 +1,14 @@
+@import '../../Assets/Scss/variables.scss';
+@import '../../Assets/Scss/mixins.scss';
+
+.main-title-w{
+    color: red;
+    @include my-flex(flex-start, row, center);
+    .main-title-content{
+        font-weight: 900;
+        font-size: 32px;
+        &:nth-child(2){
+            color: $primaryFontColor;
+        }
+    }
+}

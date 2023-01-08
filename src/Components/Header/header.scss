@@ -1,0 +1,9 @@
+@import '../../Assets/Scss/variables.scss';
+@import '../../Assets/Scss/mixins.scss';
+
+.header-w{
+    // background-color: green;
+    padding: 30px;
+    @include my-flex(flex-start, row, center);
+    border-bottom: 1px solid #97979741;
+}

@@ -1,5 +1,6 @@
 @import '../../Assets/Scss/variables.scss';
+@import '../../Assets/Scss/mixins.scss';
 
 .home-w{
-    background-color: red;
+    @include my-container;
 }
