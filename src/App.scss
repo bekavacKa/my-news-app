@@ -1,5 +1,9 @@
 @import './Assets/Scss/variables.scss';
 
+a{
+    text-decoration: none;
+}
+
 .app-w{
     background-color: $primaryBack;
     font-family: $mainFont;

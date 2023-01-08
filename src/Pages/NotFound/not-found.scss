@@ -1,9 +1,6 @@
 @import '../../Assets/Scss/variables.scss';
 @import '../../Assets/Scss/mixins.scss';
 
-.home-w{
-    @include my-container;
-    .home-content{
-        padding: 30px 0;
-    }
+.not-found-w{
+    background-color: blue;
 }

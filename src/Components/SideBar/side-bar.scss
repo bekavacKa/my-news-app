@@ -1,0 +1,31 @@
+@import '../../Assets/Scss/variables.scss';
+@import '../../Assets/Scss/mixins.scss';
+
+.side-bar-w{
+    @include my-flex(flex-start, column, center);
+    background-color: aqua;
+    width: 70px;
+    .side-bar-box{
+        @include my-flex(space-between, column, center);
+        padding: 10px 5px;
+        height: 63px;
+        width: 63px;
+        // border: 2px solid red;
+        border-radius: 5px;
+        color: $secondaryIconColor;
+        font-weight: 800;
+        margin: 5px 0;
+        .side-bar-icon{
+            // color: red;
+            font-size: 20px;
+        }
+        .side-bar-name{
+            // color: darksalmon;
+            font-size: 10px;
+        }
+        &.active{
+            background-color: $secondaryBack;
+            color: $primaryIconColor;
+        }
+    }
+}
