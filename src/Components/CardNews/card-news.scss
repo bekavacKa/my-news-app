@@ -1,0 +1,35 @@
+@import '../../Assets/Scss/variables.scss';
+@import '../../Assets/Scss/mixins.scss';
+
+.card-news-box{
+    width: 321px;
+    // height: 112px;
+    .box-image{
+        height: 140px;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        border-radius: 5px 5px 0 0;
+    }
+    .box-info{
+        height: 140px;
+        @include my-flex(flex-start, column, normal);
+        background-color: $secondaryBack;
+        padding: 10px;
+        border-radius: 0 0 5px 5px;
+        .box-info-cat{
+            text-transform: uppercase;
+            color: $secondaryFontColor;
+            font-size: 10px;
+            font-weight: 600;
+        }
+        .box-info-title{
+            font-weight: 500;
+            font-size: 16px;
+            margin: 10px 0 60px;
+        }
+        .box-info-publisher{
+            font-size: 12px;
+        }
+    }
+}

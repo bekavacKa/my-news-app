@@ -1,0 +1,40 @@
+@import '../../Assets/Scss/variables.scss';
+@import '../../Assets/Scss/mixins.scss';
+
+.latest-news-w{
+    background-color: aqua;
+    width: 321px;
+    height: 500px;
+    border-radius: 5px;
+    background-color: $secondaryBack;
+    padding: 15px 10px;
+    .latest-news-header{
+        @include my-flex(flex-start, row, center);
+        .dot{
+            height: 15px;
+            width: 15px;
+            background-color: red;
+            border-radius: 50%;
+        }
+    }
+    .latest-news-content{
+        height: 400px;
+        overflow-y: scroll;
+        .content-card{
+            // background-color: red;
+            padding: 10px 0;
+            border-bottom: 1px solid $secondaryFontColor;
+            .content-card-time{
+                color: $secondaryFontColor;
+                font-size: 10px;
+                font-weight: 600;
+            }
+            .content-card-title{
+                font-weight: 500;
+                font-size: 16px;
+            }
+        }
+    }
+    .latest-news-footer{
+    }
+}

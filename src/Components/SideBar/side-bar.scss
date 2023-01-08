@@ -3,8 +3,8 @@
 
 .side-bar-w{
     @include my-flex(flex-start, column, center);
-    background-color: aqua;
-    width: 70px;
+    // background-color: aqua;
+    // width: 70px;
     .side-bar-box{
         @include my-flex(space-between, column, center);
         padding: 10px 5px;

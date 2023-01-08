@@ -1,17 +1,45 @@
 import React from 'react';
+import CardNews from '../../Components/CardNews/CardNews';
 import Header from '../../Components/Header/Header';
+import LatestNews from '../../Components/LatestNews/LatestNews';
 import NewsNotice from '../../Components/NewsNotice/NewsNotice';
 import SideBar from '../../Components/SideBar/SideBar';
 import './home.scss';
 
 function Home() {
+
+  const testData = [1,2,3,4,5,6,7,8,9,10];
+
+  const contentLayout = () => {
+    return (
+      testData.map((card, index) => {
+        if(index === 2) {
+          return(
+            <LatestNews />
+          )
+        }
+        return(
+          <CardNews key={index} />
+        )
+      })
+    )
+  } 
+
   return (
     <>
         <NewsNotice />
         <div className='home-w'>
           <Header />
           <div className='home-content'>
-            <SideBar />
+            <div className='home-cotent-sidebar'>
+              <SideBar />
+            </div>
+            <div className='home-cotent-cards'>
+              <h2 className='home-content-title'>News</h2>
+              {
+                contentLayout()
+              }
+            </div>
           </div>
         </div>
     </>
