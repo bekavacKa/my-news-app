@@ -21,19 +21,19 @@ function LatestNews() {
     }
     return (
         <div className='latest-news-w'>
-        <div className='latest-news-header'>
-            <div className='dot'></div>
-            <h4>Latest News</h4>
+            <div className='latest-news-header'>
+                <div className='news-header-dot'></div>
+                <h4 className='news-header-title'>Latest News</h4>
+            </div>
+            <div className='latest-news-content'>
+                {
+                    latestCardLayout()
+                }
+            </div>
+            <div className='latest-news-footer'>
+                <p className='footer-btn'>See all news </p>
+            </div>
         </div>
-        <div className='latest-news-content'>
-            {
-                latestCardLayout()
-            }
-        </div>
-        <div className='latest-news-footer'>
-            <button className='footer-btn'>See all news </button>
-        </div>
-    </div>
   )
 }
 

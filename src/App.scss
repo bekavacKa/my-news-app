@@ -9,3 +9,18 @@ a{
     font-family: $mainFont;
     // height: 100vh;
 }
+*{
+    scrollbar-width: thin;
+    scrollbar-color: $secondaryIconColor $primaryIconColor;
+}
+//Chrome scrool
+*::-webkit-scrollbar {
+    width: 5px;
+}
+*::-webkit-scrollbar-track {
+    background: $secondaryBack;
+}
+*::-webkit-scrollbar-thumb {
+    background-color: $secondaryIconColor;
+    border-radius: 20px;
+}

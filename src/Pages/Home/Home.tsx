@@ -15,11 +15,11 @@ function Home() {
       testData.map((card, index) => {
         if(index === 2) {
           return(
-            <LatestNews />
+            <LatestNews key={index+2} />
           )
         }
         return(
-          <CardNews key={index} />
+          <CardNews key={index+2} />
         )
       })
     )
@@ -34,12 +34,14 @@ function Home() {
             <div className='home-cotent-sidebar'>
               <SideBar />
             </div>
+
             <div className='home-cotent-cards'>
-              <h2 className='home-content-title'>News</h2>
+              <h2 className='content-title'>News</h2>
               {
                 contentLayout()
               }
             </div>
+
           </div>
         </div>
     </>
