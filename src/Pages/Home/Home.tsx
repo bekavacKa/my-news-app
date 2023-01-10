@@ -8,19 +8,24 @@ import './home.scss';
 
 function Home() {
 
-  const testData = [1,2,3,4,5,6,7,8,9,10];
+  const testData = [1,2,3,4,5,6,7,8,9,10,32];
 
   const contentLayout = () => {
     return (
       testData.map((card, index) => {
-        if(index === 2) {
+        if(index !== 2) {
           return(
-            <LatestNews key={index+2} />
+            <div className='content-cards-news'>
+              <CardNews key={index+2} />
+            </div>
+          )
+        }else{
+          return(
+            <div className='content-latest'>
+              <LatestNews key={index+2} />
+            </div>
           )
         }
-        return(
-          <CardNews key={index+2} />
-        )
       })
     )
   } 
@@ -36,7 +41,7 @@ function Home() {
             </div>
 
             <div className='home-cotent-cards'>
-              <h2 className='content-title'>News</h2>
+            <h2 className='content-title'>News</h2>
               {
                 contentLayout()
               }

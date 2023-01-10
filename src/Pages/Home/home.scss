@@ -4,19 +4,25 @@
 .home-w{
     @include my-container;
     .home-content{
-        padding: 30px 0;
-        @include my-flex(flex-start, row, normal);
+        padding: 20px 0;
+        @include my-flex(space-between, row, normal);
         .home-cotent-sidebar{
-            width: 70px;
-            margin-right: 20px;
+            width: 5%;
         }
         .home-cotent-cards{
-            .content-title{
-                width: 100%;
-            }
-            flex: 1;
-            @include my-flex(space-between, row, normal);
+            padding: 0 20px;
+            display: grid;
+            width: 95%;
+            grid-auto-columns: 33.3%;
             gap: 20px;
+            .content-title{
+                grid-column: span 3;
+                margin: 5px 0;
+            }
+            .content-latest{
+                grid-row: span 2;
+                grid-column: 3 / 4;
+            }
         }
     }
 }

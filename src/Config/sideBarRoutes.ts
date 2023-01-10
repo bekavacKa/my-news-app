@@ -29,4 +29,8 @@ export const SIDE_BAR_ROUTES = [
         name : "Technology",
         url : "/technology",
     },
+    {
+        name : "Favorite",
+        url : "/favorite",
+    },
 ]

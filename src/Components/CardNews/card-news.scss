@@ -2,14 +2,20 @@
 @import '../../Assets/Scss/mixins.scss';
 
 .card-news-box{
-    width: 321px;
-    // height: 112px;
+    min-width: 320px;
     .box-image{
-        height: 140px;
+        height: 160px;
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
         border-radius: 5px 5px 0 0;
+        text-align: right;
+        .image-star{
+            margin: 15px;
+            font-size: 1.4rem;
+            color: yellow;
+            cursor: pointer;
+        }
     }
     .box-info{
         height: 140px;
@@ -30,6 +36,30 @@
         }
         .box-info-publisher{
             font-size: 12px;
+        }
+    }
+    .news-breaking{
+        min-width: 320px;
+        height: 300px;
+        background-color: rgba(0, 0, 0, 0.603);
+        border-radius: 5px;
+        color: $secondaryBack;
+        text-align: center;
+        padding: 10px 20px;
+        @include my-flex(center, column, center);
+        .breaking-badge{
+            text-transform: uppercase;
+            background-color: $primaryIconColor;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-weight: 700;
+        }
+        .breaking-title{
+            text-transform: capitalize;
+            margin: 10px 0;
+        }
+        .breaking-publisher{
+            text-transform: capitalize;
         }
     }
 }

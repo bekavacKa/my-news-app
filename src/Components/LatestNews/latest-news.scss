@@ -3,7 +3,6 @@
 
 .latest-news-w{
     background-color: aqua;
-    width: 321px;
     background-color: $secondaryBack;
     padding: 15px 2px;
     border-radius: 5px;
@@ -11,22 +10,35 @@
         @include my-flex(flex-start, row, center);
         padding: 0 10px 15px;
         .news-header-dot{
-            height: 10px;
-            width: 10px;
+            height: 18px;
+            width: 18px;
             background-color: $primaryIconColor;
             border-radius: 50%;
-            outline: 5px solid #bb1e1e4d;
+            animation: pulses 1.5s infinite linear;
+            @keyframes pulses {
+                0% {
+                    transform: scale(0.15);
+                    opacity: 0;
+                }
+                50% {
+                    opacity: 1;
+                }
+                100% {
+                    transform: scale(1);
+                    opacity: 0;
+                }
+            }
         }
         .news-header-title{
             margin: 0 10px;
         }
     }
     .latest-news-content{
-        height: 529px;
+        min-height: 180px;
+        max-height: 529px;
         overflow-y: scroll;
         padding: 0 10px;
         .content-card{
-            // background-color: red;
             padding: 10px 0;
             border-bottom: 1px solid #97979741;
             .content-card-time{
