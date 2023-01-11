@@ -16,7 +16,6 @@ function LatestNews() {
                     </div>
                 )
             })
-
         )
     }
     return (
