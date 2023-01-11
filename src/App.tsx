@@ -12,10 +12,12 @@ import Science from './Components/Science/Science';
 import Sports from './Components/Sports/Sports';
 import Technology from './Components/Technology/Technology';
 import Favorite from './Components/Favorite/Favorite';
+import Loader from './Components/Loader/Loader';
 
 function App() {
   return (
     <div className="app-w">
+      <Loader />
       <BrowserRouter>
         <Routes>
           <Route path={routes.HOME.url} element={<Home />} >

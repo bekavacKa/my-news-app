@@ -1,9 +1,14 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import MyNewsService from '../../Services/MyNewsService';
 import CardNews from '../CardNews/CardNews';
 import LatestNews from '../LatestNews/LatestNews';
 
 function HomeContent() {
     const testData = [1,2,3,4,5,6,7,8,9,10,32];
+
+    useEffect(() => {
+        testGetData();
+    },[])
 
     const contentLayout = () => {
       return (
@@ -14,7 +19,8 @@ function HomeContent() {
                 <CardNews />
               </div>
             )
-          }else{
+          }
+          else{
             return(
               <div key={index} className='content-latest'>
                 <LatestNews />
@@ -24,6 +30,12 @@ function HomeContent() {
         })
       )
     };
+
+    const testGetData = () => {
+        MyNewsService.getData()
+                    .then(res => console.log(res.data))
+                    .catch(err => console.log(err))
+    }
 
 
   return (

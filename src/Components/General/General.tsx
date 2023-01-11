@@ -1,9 +1,15 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import MyNewsService from '../../Services/MyNewsService';
 import CardNews from '../CardNews/CardNews';
 import LatestNews from '../LatestNews/LatestNews';
 
 function General() {
     const testData = [1,2,3,4,5,6,7,8,9,10,32];
+    const categoryName: string = 'sports';
+    
+    useEffect(() => {
+        testGetCategoryData();
+    },[]);
 
     const contentLayout = () => {
       return (
@@ -24,6 +30,12 @@ function General() {
         })
       )
     };
+
+    const testGetCategoryData = (): void => {
+        MyNewsService.getCategoryData(categoryName)
+                    .then(res => console.log(res.data))
+                    .catch(err => console.log(err))
+    }
 
   return (
     <>

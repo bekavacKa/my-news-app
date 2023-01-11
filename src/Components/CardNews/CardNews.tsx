@@ -27,11 +27,11 @@ function CardNews() {
           <p className='box-info-publisher'>Publisher</p>
         </div>
 
-        <div className='news-breaking'>
+        {/* <div className='news-breaking'>
           <p className='breaking-badge'>Breaking</p>
           <h3 className='breaking-title'>Peace On Earth A Wonderful Wish But No Way</h3>
           <p className='breaking-publisher'>Bertie Campbell</p>
-        </div>
+        </div> */}
 
     </div>
   )

@@ -1,8 +1,6 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
-import CardNews from '../../Components/CardNews/CardNews';
 import Header from '../../Components/Header/Header';
-import LatestNews from '../../Components/LatestNews/LatestNews';
 import NewsNotice from '../../Components/NewsNotice/NewsNotice';
 import SideBar from '../../Components/SideBar/SideBar';
 import './home.scss';
