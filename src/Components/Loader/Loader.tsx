@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useSelector } from 'react-redux';
 import './loader.scss';
 
 function Loader() {
-    const [loading, setLoading] = useState(false);
+  const { loading } = useSelector((state: any) => state.loaderStore);
 
   return (
     <>

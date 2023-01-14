@@ -7,7 +7,10 @@ function CardNews() {
 
   const [favorite, setFavorite] = useState(false);
 
-  const handleFavorite = () => {
+  const handleFavorite = (e: React.MouseEvent<SVGElement, MouseEvent>) => {
+    console.log("dela");
+    
+    localStorage.setItem('favoriteNews', "test");
     setFavorite(!favorite);
   };
 
@@ -16,9 +19,9 @@ function CardNews() {
         <div className='box-image' style={{backgroundImage: ` url(${testImage})`}}>
           {
             favorite ?
-            <FaStar className='image-star' onClick={handleFavorite}/>
+            <FaStar className='image-star' onClick={(e: React.MouseEvent<SVGElement, MouseEvent>) => handleFavorite(e)}/>
             :
-            <FaRegStar className='image-star' onClick={handleFavorite}/>
+            <FaRegStar className='image-star' onClick={(e: React.MouseEvent<SVGElement, MouseEvent>) => handleFavorite(e)}/>
           }
         </div>
         <div className='box-info'>
