@@ -11,7 +11,7 @@ function Sports() {
           if(index !== 2) {
             return(
               <div key={index} className='content-cards-news'>
-                <CardNews />
+                <LatestNews />
               </div>
             )
           }else{

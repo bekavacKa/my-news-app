@@ -1,25 +1,29 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch } from "react-redux";
 import { setLoader } from '../../Redux/loaderSlice';
 import MyNewsService from '../../Services/MyNewsService';
 import CardNews from '../CardNews/CardNews';
 import LatestNews from '../LatestNews/LatestNews';
+import { IData } from '../../Interfaces/DataInterface';
 
 function HomeContent() {
-  const testData = [1,2,3,4,5,6,7,8,9,10,32];
+
+  const categoryName: string = 'home';
   const dispatch = useDispatch();
+  const [responseData, setResponseData] = useState<IData[] | null>(null);
 
   useEffect(() => {
-      testGetData();
+      getData();
   },[])
 
   const contentLayout = () => {
     return (
-      testData.map((card, index) => {
+      responseData &&
+      responseData.map((card: IData, index: number) => {
         if(index !== 2) {
           return(
             <div key={index} className='content-cards-news'>
-              <CardNews />
+              <CardNews {...card} />
             </div>
           )
         }
@@ -34,10 +38,13 @@ function HomeContent() {
     )
   };
 
-  const testGetData = () => {
+  const getData = (): void => {
     dispatch(setLoader(true));
-    MyNewsService.getData()
-                .then(res => console.log(res.data.articles))
+    MyNewsService.getCategoryData(categoryName)
+                .then(res => {
+                  // console.log(res.data);
+                  setResponseData(res.data.results);
+                })
                 .catch(err => console.log(err))
                 .finally(() => dispatch(setLoader(false)));
   }

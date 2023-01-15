@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { FC, useState } from 'react';
 import './card-news.scss';
 import testImage from '../../Assets/Images/news.jpg';
 import { FaRegStar, FaStar } from 'react-icons/fa';
+import { IData } from '../../Interfaces/DataInterface';
 
-function CardNews() {
+const CardNews : FC <IData> = ({ section, title, multimedia}) => {
 
   const [favorite, setFavorite] = useState(false);
 
@@ -16,7 +17,7 @@ function CardNews() {
 
   return (
     <div className='card-news-box'>
-        <div className='box-image' style={{backgroundImage: ` url(${testImage})`}}>
+        <div className='box-image' style={{backgroundImage: ` url(${multimedia && multimedia[0].url})`}}>
           {
             favorite ?
             <FaStar className='image-star' onClick={(e: React.MouseEvent<SVGElement, MouseEvent>) => handleFavorite(e)}/>
@@ -25,9 +26,9 @@ function CardNews() {
           }
         </div>
         <div className='box-info'>
-          <p className='box-info-cat'>Category</p>
-          <p className='box-info-title'>Title</p>
-          <p className='box-info-publisher'>Publisher</p>
+          <p className='box-info-cat'>{section}</p>
+          <p className='box-info-title'>{title}</p>
+          <p className='box-info-publisher'>autor</p>
         </div>
 
         {/* <div className='news-breaking'>
