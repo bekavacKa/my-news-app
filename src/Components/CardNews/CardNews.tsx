@@ -4,7 +4,7 @@ import testImage from '../../Assets/Images/news.jpg';
 import { FaRegStar, FaStar } from 'react-icons/fa';
 import { IData } from '../../Interfaces/DataInterface';
 
-const CardNews : FC <IData> = ({ section, title, multimedia}) => {
+const CardNews : FC <IData> = ({ section, title, byline, multimedia}) => {
 
   const [favorite, setFavorite] = useState(false);
 
@@ -15,21 +15,35 @@ const CardNews : FC <IData> = ({ section, title, multimedia}) => {
     setFavorite(!favorite);
   };
 
-  return (
-    <div className='card-news-box'>
+  const cardNewsLayout = () => {
+    return (
+      <>
         <div className='box-image' style={{backgroundImage: ` url(${multimedia && multimedia[0].url})`}}>
+          <div className='image-star-holder'>
           {
             favorite ?
-            <FaStar className='image-star' onClick={(e: React.MouseEvent<SVGElement, MouseEvent>) => handleFavorite(e)}/>
+              <FaStar className='image-star' onClick={(e: React.MouseEvent<SVGElement, MouseEvent>) => handleFavorite(e)}/>
             :
-            <FaRegStar className='image-star' onClick={(e: React.MouseEvent<SVGElement, MouseEvent>) => handleFavorite(e)}/>
+              <FaRegStar className='image-star' onClick={(e: React.MouseEvent<SVGElement, MouseEvent>) => handleFavorite(e)}/>
           }
+          </div>
         </div>
         <div className='box-info'>
-          <p className='box-info-cat'>{section}</p>
-          <p className='box-info-title'>{title}</p>
-          <p className='box-info-publisher'>autor</p>
+          <div className='info-top'>
+            <p className='info-top-cat'>{section}</p>
+            <p className='info-top-title'>{title}</p>
+          </div>
+          <p className='box-info-publisher'>{byline}</p>
         </div>
+      </>
+    )
+  }
+
+  return (
+    <div className='card-news-box'>
+      {
+        cardNewsLayout()
+      }
 
         {/* <div className='news-breaking'>
           <p className='breaking-badge'>Breaking</p>

@@ -7,6 +7,7 @@ import { setLoader } from '../../Redux/loaderSlice';
 import MyNewsService from '../../Services/MyNewsService';
 
 function Business() {
+  
   const categoryName: string = 'business';
   const dispatch = useDispatch();
   const [responseData, setResponseData] = useState<IData[] | null>(null);

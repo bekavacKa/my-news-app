@@ -10,29 +10,39 @@
         background-size: cover;
         border-radius: 5px 5px 0 0;
         text-align: right;
-        .image-star{
-            margin: 15px;
-            font-size: 1.4rem;
-            color: yellow;
-            cursor: pointer;
+        @include my-flex(flex-end, row, normal);
+        .image-star-holder{
+            background-color: $primaryIconColor;
+            height: 40px;
+            width: 40px;
+            border-radius: 0 5px 0 5px;
+            @include my-flex(center, column, center);
+            box-shadow: -1px 1px 1px 1px white;
+            .image-star{
+                font-size: 1.2rem;
+                color: yellow;
+                cursor: pointer;
+            }
         }
     }
     .box-info{
-        height: 140px;
-        @include my-flex(flex-start, column, normal);
+        min-height: 140px;
+        @include my-flex(space-between, column, normal);
         background-color: $secondaryBack;
         padding: 10px;
         border-radius: 0 0 5px 5px;
-        .box-info-cat{
-            text-transform: uppercase;
-            color: $secondaryFontColor;
-            font-size: 10px;
-            font-weight: 600;
-        }
-        .box-info-title{
-            font-weight: 500;
-            font-size: 16px;
-            margin: 10px 0 60px;
+        .info-top{
+            .info-top-cat{
+                text-transform: uppercase;
+                color: $secondaryFontColor;
+                font-size: 10px;
+                font-weight: 600;
+            }
+            .info-top-title{
+                font-weight: 500;
+                font-size: 16px;
+                margin: 10px 0;
+            }
         }
         .box-info-publisher{
             font-size: 12px;

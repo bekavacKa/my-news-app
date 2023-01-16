@@ -12,4 +12,8 @@ export default class MyNewsService {
     static getCategoryData(category: string){
         return axios.get(`https://api.nytimes.com/svc/topstories/v2/${category}.json?api-key=XBtrrnpA0GCNGWLtSJMNMNSIVePYOqMP`);
     }
+    // ?for test
+    static getLatestData(){
+        return axios.get('https://api.nytimes.com/svc/topstories/v2/home.json?api-key=XBtrrnpA0GCNGWLtSJMNMNSIVePYOqMP');
+    }
 };
