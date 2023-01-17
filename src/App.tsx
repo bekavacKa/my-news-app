@@ -15,6 +15,7 @@ import Favorite from './Components/Favorite/Favorite';
 import Loader from './Components/Loader/Loader';
 import { store } from './Redux/store';
 import { Provider } from 'react-redux';
+import LatestNewsContent from './Components/LatestNewsContent/LatestNewsContent';
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
               <Route path={routes.SPORTS.url} element={<Sports />} />
               <Route path={routes.TECHNOLOGY.url} element={<Technology />} />
               <Route path={routes.FAVORITE.url} element={<Favorite />} />
+              <Route path={routes.LATES_NEWS.url} element={<LatestNewsContent />} />
             </Route>
             <Route path='*' element={<NotFound/>} />
           </Routes>

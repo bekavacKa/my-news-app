@@ -3,6 +3,10 @@ const routes ={
         name: 'Home',
         url: '/'
     },
+    LATES_NEWS: {
+        name: 'Latest News',
+        url: '/latest-news'
+    },
     GENERAL: {
         name : "General",
         url : "/general",

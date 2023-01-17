@@ -3,6 +3,12 @@
 
 .card-news-box{
     min-width: 320px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    cursor: pointer;
+    transition: $transition;
+    &:hover{
+        box-shadow: rgba(0, 0, 0, 0.24) 10px 3px 8px;
+    }
     .box-image{
         height: 160px;
         background-position: center;

@@ -4,11 +4,18 @@
 .latest-news-w{
     background-color: aqua;
     background-color: $secondaryBack;
-    padding: 15px 2px;
+    padding: 15px 2px 0px;
     border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    cursor: pointer;
+    transition: $transition;
+    &:hover{
+        box-shadow: rgba(0, 0, 0, 0.24) 10px 3px 8px;
+    }
     .latest-news-header{
         @include my-flex(flex-start, row, center);
         padding: 0 10px 15px;
+        box-shadow: 0 4px 5px -2px gray;
         .news-header-dot{
             height: 18px;
             width: 18px;
@@ -37,10 +44,15 @@
         min-height: 180px;
         max-height: 529px;
         overflow-y: scroll;
-        padding: 0 10px;
+        padding: 0 5px;
         .content-card{
-            padding: 10px 0;
+            padding: 10px 5px;
             border-bottom: 1px solid #97979741;
+            cursor: pointer;
+            transition: $transition;
+            &:hover{
+                background-color: $primaryBack;
+            }
             .content-card-time{
                 color: $secondaryFontColor;
                 font-size: 10px;
@@ -54,9 +66,20 @@
         }
     }
     .latest-news-footer{
-        padding: 15px 10px 0;
         color: $secondaryFontColor;
         font-weight: 500;
         cursor: pointer;
+        .footer-btn{
+            @include my-flex(flex-start, row, center);
+            padding: 10px;
+            transition: $transition;
+            .fotter-arrow{
+                color: $primaryFontColor;
+                margin: 0 5px;
+            }
+            &:hover{
+                transform: scale(1.02);
+            }
+        }
     }
 }

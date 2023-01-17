@@ -1,5 +1,7 @@
 import React, { FC, useState, useEffect } from 'react';
+import { FaAngleRight } from 'react-icons/fa';
 import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { IData } from '../../Interfaces/DataInterface';
 import { setLoader } from '../../Redux/loaderSlice';
 import MyNewsService from '../../Services/MyNewsService';
@@ -50,9 +52,9 @@ const LatestNews : FC <IData> = ({ title }) => {
                     latestCardLayout()
                 }
             </div>
-            <div className='latest-news-footer'>
-                <p className='footer-btn'>See all news </p>
-            </div>
+            <Link to={`/latest-news`} className='latest-news-footer'>
+                <p className='footer-btn'>See all news <FaAngleRight className='fotter-arrow' /> </p>
+            </Link>
         </div>
     )
 }
