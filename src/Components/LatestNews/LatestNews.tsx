@@ -1,29 +1,48 @@
-import React, { FC, useState, useEffect } from 'react';
+import React, { FC, useState, useEffect, useRef } from 'react';
 import { FaAngleRight } from 'react-icons/fa';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { IData } from '../../Interfaces/DataInterface';
+import { ILatestNews } from '../../Interfaces/DataInterface';
 import { setLoader } from '../../Redux/loaderSlice';
 import MyNewsService from '../../Services/MyNewsService';
 import './latest-news.scss';
 
-const LatestNews : FC <IData> = ({ title }) => {
+const LatestNews : FC <ILatestNews> = ( ) => {
 
     const dispatch = useDispatch();
-    const [responseData, setResponseData] = useState<IData[] | null>(null);
+    const [responseData, setResponseData] = useState<ILatestNews[]>([]);
+    const latestNewsRef = useRef<HTMLDivElement>(null);
+    const [pageNum, setPageNum] = useState(0);
 
     useEffect(() => {
         getLatestNews();
     },[])
 
+    useEffect(() => {
+        if (!latestNewsRef.current){
+            return;
+        }
+        const element = latestNewsRef.current;
+        const handleScroll = () => {
+            if (element.scrollHeight - element.scrollTop === element.clientHeight) {
+                setPageNum(pageNum + 1);
+                getLatestNews()
+            }
+        }
+        element.addEventListener('scroll', handleScroll);
+        return () => {
+            element.removeEventListener('scroll', handleScroll);
+        }
+    },[pageNum, responseData, latestNewsRef])
+    
     const latestCardLayout = () => {
         return (
             responseData &&
             responseData.map((item, index) => {
                 return(
                     <div className='content-card' key={index}>
-                        <p className='content-card-time'>{item.created_date}</p>
-                        <p className='content-card-title'>{item.title}</p>
+                        <p className='content-card-time'>{item.pub_date?.toString().slice(11,16)}</p>
+                        <p className='content-card-title'>{item.headline?.main}</p>
                     </div>
                 )
             })
@@ -32,10 +51,10 @@ const LatestNews : FC <IData> = ({ title }) => {
 
     const getLatestNews = (): void => {
         dispatch(setLoader(true));
-        MyNewsService.getLatestData()
+        MyNewsService.getLatestData(pageNum)
                     .then(res => {
-                      console.log(res.data);
-                      setResponseData(res.data.results);
+                    //   console.log(res.data.response);
+                      setResponseData([...responseData, ...res.data.response.docs]);
                     })
                     .catch(err => console.log(err))
                     .finally(() => dispatch(setLoader(false)));
@@ -47,7 +66,7 @@ const LatestNews : FC <IData> = ({ title }) => {
                 <div className='news-header-dot'></div>
                 <h4 className='news-header-title'>Latest News</h4>
             </div>
-            <div className='latest-news-content'>
+            <div ref={latestNewsRef} className='latest-news-content'>
                 {
                     latestCardLayout()
                 }

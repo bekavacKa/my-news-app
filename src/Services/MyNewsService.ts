@@ -13,7 +13,7 @@ export default class MyNewsService {
         return axios.get(`https://api.nytimes.com/svc/topstories/v2/${category}.json?api-key=XBtrrnpA0GCNGWLtSJMNMNSIVePYOqMP`);
     }
     // ?for test
-    static getLatestData(){
-        return axios.get('https://api.nytimes.com/svc/topstories/v2/home.json?api-key=XBtrrnpA0GCNGWLtSJMNMNSIVePYOqMP');
+    static getLatestData(pageNum: number){
+        return axios.get(`https://api.nytimes.com/svc/search/v2/articlesearch.json?page=${pageNum}&sort=newest&api-key=XBtrrnpA0GCNGWLtSJMNMNSIVePYOqMP`);
     }
 };

@@ -9,6 +9,7 @@ const LatestNewsContent : FC <IData> = ({ title }) => {
 
   const dispatch = useDispatch();
   const [responseData, setResponseData] = useState<IData[] | null>(null);
+  const [pageNum, setPageNum] = useState(0);
 
   useEffect(() => {
     getLatestNews();
@@ -29,7 +30,7 @@ const LatestNewsContent : FC <IData> = ({ title }) => {
 
   const getLatestNews = (): void => {
     dispatch(setLoader(true));
-    MyNewsService.getLatestData()
+    MyNewsService.getLatestData(pageNum)
                 .then(res => {
                   console.log(res.data);
                   setResponseData(res.data.results);

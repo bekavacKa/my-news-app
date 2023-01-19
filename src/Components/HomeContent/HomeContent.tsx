@@ -49,7 +49,6 @@ function HomeContent() {
                 .finally(() => dispatch(setLoader(false)));
   }
 
-
   return (
     <>
         <h2 className='content-title'>News</h2>

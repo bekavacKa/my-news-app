@@ -7,6 +7,10 @@ const routes ={
         name: 'Latest News',
         url: '/latest-news'
     },
+    SINGLE_NEWS: {
+        name: 'Single News',
+        url: '/single-news'
+    },
     GENERAL: {
         name : "General",
         url : "/general",

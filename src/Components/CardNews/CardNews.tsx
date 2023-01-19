@@ -39,17 +39,25 @@ const CardNews : FC <IData> = ({ section, title, byline, multimedia}) => {
     )
   }
 
+  const breakingCardLayout = () => {
+    return (
+      <div className='news-breaking'>
+        <p className='breaking-badge'>Breaking</p>
+        <h3 className='breaking-title'>Peace On Earth A Wonderful Wish But No Way</h3>
+        <p className='breaking-publisher'>Bertie Campbell</p>
+      </div>
+    )
+  }
+
   return (
     <div className='card-news-box'>
       {
         cardNewsLayout()
       }
 
-        {/* <div className='news-breaking'>
-          <p className='breaking-badge'>Breaking</p>
-          <h3 className='breaking-title'>Peace On Earth A Wonderful Wish But No Way</h3>
-          <p className='breaking-publisher'>Bertie Campbell</p>
-        </div> */}
+      {/* {
+        breakingCardLayout()
+      } */}
 
     </div>
   )

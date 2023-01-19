@@ -28,4 +28,35 @@ export interface IMultimedum {
     subtype?: string;
     caption?: string;
     copyright?: string;
-}
+};
+
+export interface ILatestNews {
+    abstract?: string;
+    web_url?: string;
+    snippet?: string;
+    lead_paragraph?: string;
+    source?: string;
+    multimedia?: any[];
+    headline?: IHeadline;
+    keywords?: any[];
+    pub_date?: string;
+    document_type?: string;
+    news_desk?: string;
+    section_name?: string;
+    subsection_name?: string;
+    type_of_material?: string;
+    _id?: string;
+    word_count?: number;
+    uri?: string;
+  }
+  
+  export interface IHeadline {
+    main?: string;
+    kicker?: any;
+    content_kicker?: any;
+    print_headline?: any;
+    name?: any;
+    seo?: any;
+    sub?: any;
+  }
+  
