@@ -3,8 +3,9 @@ import { FaAngleRight } from 'react-icons/fa';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { ILatestNews } from '../../Interfaces/DataInterface';
-import { setLoader } from '../../Redux/loaderSlice';
+import { setMiniLoader } from '../../Redux/loaderMiniSlice';
 import MyNewsService from '../../Services/MyNewsService';
+import LoaderMini from '../LoaderMini/LoaderMini';
 import './latest-news.scss';
 
 const LatestNews : FC <ILatestNews> = ( ) => {
@@ -20,6 +21,7 @@ const LatestNews : FC <ILatestNews> = ( ) => {
 
     useEffect(() => {
         if (!latestNewsRef.current){
+            // console.log("problem");
             return;
         }
         const element = latestNewsRef.current;
@@ -50,14 +52,14 @@ const LatestNews : FC <ILatestNews> = ( ) => {
     }
 
     const getLatestNews = (): void => {
-        dispatch(setLoader(true));
+        dispatch(setMiniLoader(true));
         MyNewsService.getLatestData(pageNum)
                     .then(res => {
                     //   console.log(res.data.response);
                       setResponseData([...responseData, ...res.data.response.docs]);
                     })
                     .catch(err => console.log(err))
-                    .finally(() => dispatch(setLoader(false)));
+                    .finally(() => dispatch(setMiniLoader(false)));
       }
 
     return (
@@ -70,6 +72,7 @@ const LatestNews : FC <ILatestNews> = ( ) => {
                 {
                     latestCardLayout()
                 }
+                <LoaderMini />
             </div>
             <Link to={`/latest-news`} className='latest-news-footer'>
                 <p className='footer-btn'>See all news <FaAngleRight className='fotter-arrow' /> </p>

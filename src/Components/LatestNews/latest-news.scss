@@ -64,6 +64,25 @@
                 margin: 5px 0;
             }
         }
+        .loader-content{
+            @include my-flex(center,column, center);
+            user-select: none;
+            padding: 30px;
+            .loader-shape{
+                width: 54px;
+                height: 54px;
+                border-radius: 50%;
+                border-top: 4px solid rgba(247, 55, 17, 1);
+                border-left: 4px solid rgba(247, 54, 17, 1);
+                border-right: 4px solid rgba(247, 54, 17, 0);
+                animation: spin 0.5s infinite linear;
+                @keyframes spin {
+                    to{
+                        transform: rotate(360deg);
+                    }
+                }
+            }
+        }
     }
     .latest-news-footer{
         color: $secondaryFontColor;
