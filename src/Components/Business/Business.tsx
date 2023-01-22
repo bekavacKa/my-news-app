@@ -20,20 +20,11 @@ function Business() {
     return (
       responseData &&
       responseData.map((card: IData, index: number) => {
-        if(index !== 2) {
-          return(
-            <div key={index} className='content-cards-news'>
-              <CardNews {...card} />
-            </div>
-          )
-        }
-        else{
-          return(
-            <div key={index} className='content-latest'>
-              <LatestNews />
-            </div>
-          )
-        }
+        return(
+          <div key={index} className='content-cards-news'>
+            <CardNews {...card} />
+          </div>
+        )
       })
     )
   };

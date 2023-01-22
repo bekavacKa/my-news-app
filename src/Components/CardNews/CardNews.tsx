@@ -4,21 +4,21 @@ import testImage from '../../Assets/Images/news.jpg';
 import { FaRegStar, FaStar } from 'react-icons/fa';
 import { IData } from '../../Interfaces/DataInterface';
 
-const CardNews : FC <IData> = ({ section, title, byline, multimedia}) => {
+const CardNews : FC <IData> = (card, { section, title, byline, multimedia}) => {
 
   const [favorite, setFavorite] = useState(false);
 
   const handleFavorite = (e: React.MouseEvent<SVGElement, MouseEvent>) => {
     console.log("dela");
     
-    localStorage.setItem('favoriteNews', "test");
+    localStorage.setItem('favoriteNews', JSON.stringify({...card, card}));
     setFavorite(!favorite);
   };
 
   const cardNewsLayout = () => {
     return (
       <>
-        <div className='box-image' style={{backgroundImage: ` url(${multimedia && multimedia[0].url})`}}>
+        <div className='box-image' style={{backgroundImage: ` url(${card.multimedia && card.multimedia[0].url})`}}>
           <div className='image-star-holder'>
           {
             favorite ?
@@ -30,10 +30,10 @@ const CardNews : FC <IData> = ({ section, title, byline, multimedia}) => {
         </div>
         <div className='box-info'>
           <div className='info-top'>
-            <p className='info-top-cat'>{section}</p>
-            <p className='info-top-title'>{title}</p>
+            <p className='info-top-cat'>{card.section}</p>
+            <p className='info-top-title'>{card.title}</p>
           </div>
-          <p className='box-info-publisher'>{byline}</p>
+          <p className='box-info-publisher'>{card.byline}</p>
         </div>
       </>
     )
@@ -43,8 +43,8 @@ const CardNews : FC <IData> = ({ section, title, byline, multimedia}) => {
     return (
       <div className='news-breaking'>
         <p className='breaking-badge'>Breaking</p>
-        <h3 className='breaking-title'>Peace On Earth A Wonderful Wish But No Way</h3>
-        <p className='breaking-publisher'>Bertie Campbell</p>
+        <h3 className='breaking-title'>{card.title}</h3>
+        <p className='breaking-publisher'>{card.byline}</p>
       </div>
     )
   }
@@ -52,12 +52,10 @@ const CardNews : FC <IData> = ({ section, title, byline, multimedia}) => {
   return (
     <div className='card-news-box'>
       {
-        cardNewsLayout()
-      }
-
-      {/* {
+        card.multimedia ?
+        cardNewsLayout() :
         breakingCardLayout()
-      } */}
+      }
 
     </div>
   )

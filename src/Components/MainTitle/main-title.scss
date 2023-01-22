@@ -2,7 +2,7 @@
 @import '../../Assets/Scss/mixins.scss';
 
 .main-title-w{
-    color: red;
+    color: $primaryIconColor;
     @include my-flex(flex-start, row, center);
     .main-title-content{
         font-weight: 900;

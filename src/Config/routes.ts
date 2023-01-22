@@ -3,6 +3,10 @@ const routes ={
         name: 'Home',
         url: '/'
     },
+    SEARCHED_CONTENT: {
+        name: 'SEARCHED CONTENT',
+        url: '/search'
+    },
     LATES_NEWS: {
         name: 'Latest News',
         url: '/latest-news'

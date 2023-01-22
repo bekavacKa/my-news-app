@@ -7,12 +7,12 @@ function LoaderMini() {
 
   return (
     <>
-        {
-            miniLoading &&
-            <div className='loader-content'>
-                <div className='loader-shape'></div>
-            </div>  
-        }
+      {
+        miniLoading &&
+        <div className='loader-content'>
+            <div className='loader-shape'></div>
+        </div>  
+      }
     </>
   )
 }

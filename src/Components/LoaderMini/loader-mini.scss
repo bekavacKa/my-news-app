@@ -4,7 +4,7 @@
 .loader-content{
     @include my-flex(center,column, center);
     user-select: none;
-    padding: 30px;
+    padding: 20px;
     .loader-shape{
         width: 54px;
         height: 54px;
