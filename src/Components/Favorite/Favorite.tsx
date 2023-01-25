@@ -1,26 +1,21 @@
 import React from 'react'
+import { useSelector } from 'react-redux';
 import CardNews from '../CardNews/CardNews';
-import LatestNews from '../LatestNews/LatestNews';
+import { IData } from '../../Interfaces/DataInterface';
 
 function Favorite() {
-    const testData = [1,2,3];
+
+    const { favoriteNews } = useSelector((state: any) => state.favoriteNewsStore);
+    console.log(favoriteNews)
 
     const contentLayout = () => {
       return (
-        testData.map((card, index) => {
-          if(index !== 2) {
-            return(
-              <div key={index} className='content-cards-news'>
-                <LatestNews />
-              </div>
-            )
-          }else{
-            return(
-              <div key={index} className='content-latest'>
-                <LatestNews />
-              </div>
-            )
-          }
+        favoriteNews.map((favorite: any, index: number) => {
+          return(
+            <div key={index} className='content-cards-news'>
+              <CardNews {...favorite} />
+            </div>
+          )
         })
       )
     };

@@ -1,11 +1,25 @@
-import React from 'react';
+import React, {useEffect} from 'react';
+import { useDispatch } from 'react-redux';
 import { Outlet } from 'react-router-dom';
 import Header from '../../Components/Header/Header';
 import NewsNotice from '../../Components/NewsNotice/NewsNotice';
 import SideBar from '../../Components/SideBar/SideBar';
+import { setFromLocalStorage } from '../../Redux/favoriteNewsSlice';
 import './home.scss';
 
-function Home() { 
+function Home() {
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    checkFavoriteLocalStorage();
+  }, []);
+
+  const checkFavoriteLocalStorage = ():void => {
+    if(localStorage.hasOwnProperty('favoriteNews')){
+      dispatch(setFromLocalStorage(JSON.stringify(localStorage.getItem('favoriteNews'))));
+    }
+  }
 
   return (
     <>

@@ -1,17 +1,29 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useState, useEffect } from 'react';
 import './card-news.scss';
 import testImage from '../../Assets/Images/news.jpg';
 import { FaRegStar, FaStar } from 'react-icons/fa';
 import { IData } from '../../Interfaces/DataInterface';
+import { useDispatch, useSelector } from 'react-redux';
+import { setFavoriteNews } from '../../Redux/favoriteNewsSlice';
 
 const CardNews : FC <IData> = (card, { section, title, byline, multimedia}) => {
 
+  const dispatch = useDispatch();
   const [favorite, setFavorite] = useState(false);
+  const { favoriteNews } = useSelector((state: any) => state.favoriteNewsStore);
+
+  // useEffect(() => {
+  //   console.log("iz stora", favoriteNews);
+    
+  // }, [])
+  
 
   const handleFavorite = (e: React.MouseEvent<SVGElement, MouseEvent>) => {
     console.log("dela");
+    console.log("dela card", card);
     
-    localStorage.setItem('favoriteNews', JSON.stringify({...card, card}));
+    dispatch(setFavoriteNews(card));
+    localStorage.setItem('favoriteNews', JSON.stringify(card));
     setFavorite(!favorite);
   };
 
