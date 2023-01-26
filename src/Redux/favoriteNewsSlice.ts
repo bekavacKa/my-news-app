@@ -14,7 +14,15 @@ const favoriteNewsSlice = createSlice({
     initialState,
     reducers: {
         setFavoriteNews: (state, action) => {
-            state.favoriteNews = [...state.favoriteNews, action.payload];
+            const newFavoriteNews = action.payload;
+            if(state.favoriteNews.find((item) => item.uri === newFavoriteNews.uri) === undefined) {
+                state.favoriteNews = [...state.favoriteNews, newFavoriteNews];
+                localStorage.setItem('favoriteNews', JSON.stringify(state.favoriteNews));
+            }
+        },
+        removeFavoriteNews: (state, action: { payload: IData }) => {
+            state.favoriteNews = state.favoriteNews.filter(favorite => favorite.uri !== action.payload.uri);
+            localStorage.setItem('favoriteNews', JSON.stringify(state.favoriteNews));
         },
         setFromLocalStorage: (state, action) => {
             state.favoriteNews = action.payload;
@@ -22,6 +30,6 @@ const favoriteNewsSlice = createSlice({
     }
 });
 
-export const { setFavoriteNews, setFromLocalStorage } = favoriteNewsSlice.actions;
+export const { setFavoriteNews, removeFavoriteNews, setFromLocalStorage } = favoriteNewsSlice.actions;
 
 export default favoriteNewsSlice.reducer;

@@ -18,6 +18,7 @@ export interface IData {
     geo_facet?: string[];
     multimedia?: IMultimedum[];
     short_url?: string;
+    myFavoriteNews?: boolean;
 };
 export interface IMultimedum {
     url?: string;

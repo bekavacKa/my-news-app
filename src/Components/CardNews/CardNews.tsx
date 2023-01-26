@@ -14,16 +14,15 @@ const CardNews : FC <IData> = (card, { section, title, byline, multimedia}) => {
 
   // useEffect(() => {
   //   console.log("iz stora", favoriteNews);
+  //   localStorage.setItem('favoriteNews', JSON.stringify(card));
     
   // }, [])
   
 
   const handleFavorite = (e: React.MouseEvent<SVGElement, MouseEvent>) => {
-    console.log("dela");
-    console.log("dela card", card);
+    console.log("dela card", card.myFavoriteNews);
     
     dispatch(setFavoriteNews(card));
-    localStorage.setItem('favoriteNews', JSON.stringify(card));
     setFavorite(!favorite);
   };
 

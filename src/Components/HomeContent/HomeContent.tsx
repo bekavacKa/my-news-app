@@ -20,11 +20,11 @@ function HomeContent() {
 
   useEffect(() => {
       getData();
-      console.log("opalioo");
+      // console.log("opalioo");
   },[])
 
   useEffect(() => {
-    console.log(searchTerm.length);
+    // console.log(searchTerm.length);
     
     searchTerm && searchTerm.length > 0 ?
       // console.log("searcha u home i nije prazan", searchTerm)
