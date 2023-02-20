@@ -5,11 +5,12 @@ import { IData } from '../../Interfaces/DataInterface';
 
 function Favorite() {
 
+  const { favoriteNews } = useSelector((state: any) => state.favoriteNewsStore);
   const [favoriteNewsLS, setFavoriteNewsLS] = useState<IData[]>([]);
 
   useEffect(() => {
     checkFavoriteLocalStorage();
-  }, []);
+  }, [favoriteNews]);
 
   const checkFavoriteLocalStorage = ():void => {
     const allFavoriteLS = localStorage.getItem('favoriteNews');

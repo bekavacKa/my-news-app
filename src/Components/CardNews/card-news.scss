@@ -18,16 +18,25 @@
         text-align: right;
         @include my-flex(flex-end, row, normal);
         .image-star-holder{
-            background-color: $primaryIconColor;
+            background-color: $secondaryBack;
             height: 40px;
             width: 40px;
             border-radius: 0 5px 0 5px;
             @include my-flex(center, column, center);
-            box-shadow: -1px 1px 1px 1px white;
+            // box-shadow: -1px 1px 1px 1px $primaryIconColor;
             .image-star{
-                font-size: 1.2rem;
-                color: yellow;
+                font-size: 1.5rem;
+                color: $primaryIconColor;
                 cursor: pointer;
+            }
+        }
+        .remove-favorite{
+            background-color: white;
+            height: 40px;
+            width: 40px;
+            padding: 10px;
+            &:hover{
+                color: gray;
             }
         }
     }

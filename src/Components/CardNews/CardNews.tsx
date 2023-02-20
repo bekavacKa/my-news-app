@@ -1,30 +1,38 @@
 import React, { FC, useState, useEffect } from 'react';
 import './card-news.scss';
 import testImage from '../../Assets/Images/news.jpg';
-import { FaRegStar, FaStar } from 'react-icons/fa';
+import { FaRegStar, FaStar} from 'react-icons/fa';
 import { IData } from '../../Interfaces/DataInterface';
 import { useDispatch, useSelector } from 'react-redux';
-import { setFavoriteNews } from '../../Redux/favoriteNewsSlice';
+import { removeFavoriteNews, setFavoriteNews } from '../../Redux/favoriteNewsSlice';
 
-const CardNews : FC <IData> = (card, { section, title, byline, multimedia}) => {
+const CardNews : FC <IData> = (card) => {
 
   const dispatch = useDispatch();
   const [favorite, setFavorite] = useState(false);
   const { favoriteNews } = useSelector((state: any) => state.favoriteNewsStore);
 
-  // useEffect(() => {
-  //   console.log("iz stora", favoriteNews);
-  //   localStorage.setItem('favoriteNews', JSON.stringify(card));
-    
-  // }, [])
+  useEffect(() => {
+    if(favoriteNews.find((item:any) => (item.uri === card.uri)) === undefined){
+      setFavorite(false);
+    }
+    else{
+      setFavorite(true);
+    }
+  }, [favoriteNews])
   
 
   const handleFavorite = (e: React.MouseEvent<SVGElement, MouseEvent>) => {
-    console.log("dela card", card.myFavoriteNews);
+    console.log("dela card", card);
     
     dispatch(setFavoriteNews(card));
     setFavorite(!favorite);
   };
+
+  const deleteFavorite = (e: React.MouseEvent<SVGElement, MouseEvent>) => {
+    console.log("delete", card);
+    dispatch(removeFavoriteNews(card))
+  }
 
   const cardNewsLayout = () => {
     return (
@@ -33,9 +41,9 @@ const CardNews : FC <IData> = (card, { section, title, byline, multimedia}) => {
           <div className='image-star-holder'>
           {
             favorite ?
-              <FaStar className='image-star' onClick={(e: React.MouseEvent<SVGElement, MouseEvent>) => handleFavorite(e)}/>
+            <FaStar className='image-star' onClick={(e: React.MouseEvent<SVGElement, MouseEvent>) => deleteFavorite(e)}/>
             :
-              <FaRegStar className='image-star' onClick={(e: React.MouseEvent<SVGElement, MouseEvent>) => handleFavorite(e)}/>
+            <FaRegStar className='image-star' onClick={(e: React.MouseEvent<SVGElement, MouseEvent>) => handleFavorite(e)}/>
           }
           </div>
         </div>
