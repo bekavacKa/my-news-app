@@ -2,7 +2,7 @@ import React from 'react';
 import './side-bar.scss';
 import { SIDE_BAR_ROUTES } from '../../Config/sideBarRoutes';
 import { NavLink } from 'react-router-dom';
-import { FaDev } from "react-icons/fa";
+import { FaHeart } from "react-icons/fa";
 
 function SideBar() {
 
@@ -11,7 +11,12 @@ function SideBar() {
             SIDE_BAR_ROUTES.map((item, index) => {
                 return (
                     <NavLink className='side-bar-box' to={item.url} key={index} >
-                        <FaDev className='side-bar-icon' />
+                        {
+                            item.icon ?
+                            <img className='side-bar-icon' src={item.icon} alt=''  />
+                            :
+                            <FaHeart className='side-bar-icon' />
+                        }
                         <p className='side-bar-name'> {item.name} </p>
                     </NavLink>
                 )

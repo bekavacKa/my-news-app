@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './search.scss';
-import { FaDev } from 'react-icons/fa';
+import { AiOutlineSearch } from "react-icons/ai";
 import { useDispatch } from 'react-redux';
 import { setSearchTerm } from '../../Redux/searchTermSlice';
 import { useNavigate } from "react-router-dom";
@@ -28,7 +28,7 @@ function Search() {
   return (
     <div className='search-w'>
       <div className='search-icon-input'>
-        <FaDev className='search-icon' />
+        <AiOutlineSearch className='search-icon' />
         <input className='search-input' type="search" placeholder='Search news' onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleChange(e)} />
       </div>
       <button className='search-button' onClick={handleSearch}>

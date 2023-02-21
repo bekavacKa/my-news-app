@@ -1,7 +1,7 @@
 import React, { FC, useState, useEffect } from 'react';
 import './card-news.scss';
 import testImage from '../../Assets/Images/news.jpg';
-import { FaRegStar, FaStar} from 'react-icons/fa';
+import { FaRegHeart, FaHeart} from 'react-icons/fa';
 import { IData } from '../../Interfaces/DataInterface';
 import { useDispatch, useSelector } from 'react-redux';
 import { removeFavoriteNews, setFavoriteNews } from '../../Redux/favoriteNewsSlice';
@@ -41,9 +41,9 @@ const CardNews : FC <IData> = (card) => {
           <div className='image-star-holder'>
           {
             favorite ?
-            <FaStar className='image-star' onClick={(e: React.MouseEvent<SVGElement, MouseEvent>) => deleteFavorite(e)}/>
+            <FaHeart className='image-star' onClick={(e: React.MouseEvent<SVGElement, MouseEvent>) => deleteFavorite(e)}/>
             :
-            <FaRegStar className='image-star' onClick={(e: React.MouseEvent<SVGElement, MouseEvent>) => handleFavorite(e)}/>
+            <FaRegHeart className='image-star' onClick={(e: React.MouseEvent<SVGElement, MouseEvent>) => handleFavorite(e)}/>
           }
           </div>
         </div>
