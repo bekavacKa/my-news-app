@@ -1,27 +1,15 @@
-import React, { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux';
+import React from 'react'
+import { useSelector } from 'react-redux';
 import CardNews from '../CardNews/CardNews';
-import { IData } from '../../Interfaces/DataInterface';
+import './favorite.scss';
 
 function Favorite() {
 
   const { favoriteNews } = useSelector((state: any) => state.favoriteNewsStore);
-  const [favoriteNewsLS, setFavoriteNewsLS] = useState<IData[]>([]);
-
-  useEffect(() => {
-    checkFavoriteLocalStorage();
-  }, [favoriteNews]);
-
-  const checkFavoriteLocalStorage = ():void => {
-    const allFavoriteLS = localStorage.getItem('favoriteNews');
-    if(allFavoriteLS){
-      setFavoriteNewsLS(JSON.parse(allFavoriteLS));
-    }
-  }
 
   const contentLayout = () => {
     return (
-      favoriteNewsLS.map((favorite: any, index: number) => {
+      favoriteNews.map((favorite: any, index: number) => {
         return(
           <div key={index} className='content-cards-news'>
             <CardNews {...favorite} />
@@ -31,12 +19,22 @@ function Favorite() {
     )
   };
 
+  const emptyLayout = () => {
+    return (
+      <div className='content-empty-favorite'>
+        <p>Favorite news is empty</p>
+      </div>
+    )
+  }
 
   return (
     <>
         <h2 className='content-title'>Favorite</h2>
         {
-            contentLayout()
+          favoriteNews.length > 0 ?
+          contentLayout()
+          :
+          emptyLayout()
         }
     </>
   )

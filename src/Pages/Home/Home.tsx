@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { Outlet } from 'react-router-dom';
 import Header from '../../Components/Header/Header';
 import NewsNotice from '../../Components/NewsNotice/NewsNotice';
@@ -8,6 +8,16 @@ import { setFromLocalStorage } from '../../Redux/favoriteNewsSlice';
 import './home.scss';
 
 function Home() {
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const favoriteLS = localStorage.getItem("favoriteNews")
+    if (typeof favoriteLS === 'string') {
+        const favoriteParse = JSON.parse(favoriteLS);
+        dispatch(setFromLocalStorage(favoriteParse));
+    }
+  },[])
 
   return (
     <>
