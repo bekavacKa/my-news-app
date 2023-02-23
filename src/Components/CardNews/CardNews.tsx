@@ -38,14 +38,16 @@ const CardNews : FC <IData> = (card) => {
     return (
       <>
         <div className='box-image' style={{backgroundImage: ` url(${card.multimedia && card.multimedia[0].url})`}}>
+          <p className='ad-holdere'>AD</p>
           <div className='image-star-holder'>
-          {
-            favorite ?
-            <FaHeart className='image-star' onClick={(e: React.MouseEvent<SVGElement, MouseEvent>) => deleteFavorite(e)}/>
-            :
-            <FaRegHeart className='image-star' onClick={(e: React.MouseEvent<SVGElement, MouseEvent>) => handleFavorite(e)}/>
-          }
+            {
+              favorite ?
+              <FaHeart className='image-star' onClick={(e: React.MouseEvent<SVGElement, MouseEvent>) => deleteFavorite(e)}/>
+              :
+              <FaRegHeart className='image-star' onClick={(e: React.MouseEvent<SVGElement, MouseEvent>) => handleFavorite(e)}/>
+            }
           </div>
+
         </div>
         <div className='box-info'>
           <div className='info-top'>
