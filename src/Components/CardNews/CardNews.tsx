@@ -24,7 +24,6 @@ const CardNews : FC <IData> = (card) => {
 
   const handleFavorite = (e: React.MouseEvent<SVGElement, MouseEvent>) => {
     console.log("dela card", card);
-    
     dispatch(setFavoriteNews(card));
     setFavorite(!favorite);
   };
@@ -39,15 +38,16 @@ const CardNews : FC <IData> = (card) => {
       <>
         <div className='box-image' style={{backgroundImage: ` url(${card.multimedia && card.multimedia[0].url})`}}>
           <p className='ad-holdere'>AD</p>
-          <div className='image-star-holder'>
-            {
-              favorite ?
-              <FaHeart className='image-star' onClick={(e: React.MouseEvent<SVGElement, MouseEvent>) => deleteFavorite(e)}/>
-              :
-              <FaRegHeart className='image-star' onClick={(e: React.MouseEvent<SVGElement, MouseEvent>) => handleFavorite(e)}/>
-            }
-          </div>
-
+          {
+            favorite ?
+            <p className='favorite-holder'>
+              <FaHeart className='heart' onClick={(e: React.MouseEvent<SVGElement, MouseEvent>) => deleteFavorite(e)}/>
+            </p>
+            :
+            <p className='favorite-holder'>
+              <FaRegHeart className='heart' onClick={(e: React.MouseEvent<SVGElement, MouseEvent>) => handleFavorite(e)}/>
+            </p>
+          }
         </div>
         <div className='box-info'>
           <div className='info-top'>
@@ -77,7 +77,6 @@ const CardNews : FC <IData> = (card) => {
         cardNewsLayout() :
         breakingCardLayout()
       }
-
     </div>
   )
 }

@@ -3,6 +3,7 @@
 
 .latest-news-w{
     background-color: $secondaryBack;
+    max-height: 670px;
     padding: 15px 2px 0px;
     border-radius: 5px;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
@@ -40,8 +41,7 @@
         }
     }
     .latest-news-content{
-        min-height: 180px;
-        max-height: 529px;
+        max-height: 580px;
         overflow-y: scroll;
         padding: 0 5px;
         .content-card{

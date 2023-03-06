@@ -2,7 +2,7 @@
 @import '../../Assets/Scss/mixins.scss';
 
 .side-bar-w{
-    @include my-flex(flex-start, column, center);
+    // @include my-flex(flex-start, column, center);
     .side-bar-box{
         @include my-flex(space-between, column, center);
         padding: 10px 5px;
