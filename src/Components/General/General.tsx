@@ -1,65 +1,49 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { setLoader } from '../../Redux/loaderSlice';
-import MyNewsService from '../../Services/MyNewsService';
-import CardNews from '../CardNews/CardNews';
-import LatestNews from '../LatestNews/LatestNews';
-interface IData {
-  author : string;
-  content : string;
-  description : string;
-  publishedAt : string;
-  title : string;
-  url : string;
-  urlToImage : string
-};
+import CardNews from "../CardNews/CardNews";
+import { IData } from "../../Interfaces/DataInterface";
+import { setLoader } from "../../Redux/loaderSlice";
+import MyNewsService from "../../Services/MyNewsService";
 
 function General() {
-  // const testData = [1,2,3,4,5,6,7,8,9,10,32];
-  const categoryName: string = 'general';
-  const [generalData, setGeneralData] = useState<IData[] | null>(null);
-
+  const categoryName: string = "general";
   const dispatch = useDispatch();
-  
+  const [responseData, setResponseData] = useState<IData[] | null>(null);
+
   useEffect(() => {
-      testGetCategoryData();
-  },[]);
+    getData();
+  }, []);
 
   const contentLayout = () => {
-    console.log(generalData);
     return (
-      generalData?.length &&
-      generalData.map((card: IData, index) => {
-        if(index !== 2) {
-          return(
-            <div key={index} className='content-cards-news'>
-              <LatestNews />
-            </div>
-          )
-        }
+      responseData &&
+      responseData.map((card: IData, index: number) => {
+        return (
+          <div key={index} className="content-cards-news">
+            <CardNews {...card} />
+          </div>
+        );
       })
-    )
+    );
   };
 
-  const testGetCategoryData = (): void => {
+  const getData = (): void => {
     dispatch(setLoader(true));
     MyNewsService.getCategoryData(categoryName)
-                .then(res => {
-                  console.log(res.data)
-                  setGeneralData(res.data.articles)
-                })
-                .catch(err => console.log(err))
-                .finally(() => dispatch(setLoader(false)));
-  }
+      .then((res) => {
+        console.log(res.data);
+        setResponseData(res.data.results);
+      })
+      .catch((err) => console.log(err))
+      .finally(() => dispatch(setLoader(false)));
+  };
 
   return (
     <>
-      <h2 className='content-title'>General</h2>
-      {
-        contentLayout()
-      }
+      <h2 className="main-content-title">{categoryName}</h2>
+      <div className="main-content-cards">{contentLayout()}</div>
     </>
-  )
+  );
 }
 
-export default General
+export default General;

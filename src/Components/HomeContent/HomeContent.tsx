@@ -84,14 +84,12 @@ function HomeContent() {
   }
 
   return (
-    <>
-        <h2 className='content-title'>News</h2>
-        {searchedData && searchTerm.length > 0 ?
-          searchedContentLayout()
-          :
-          contentLayout()
-        }
-    </>
+    <div className='homeContent-w'>
+      <h2 className='main-content-title'>News</h2>
+      <div className='main-content-cards'>
+        {contentLayout()}
+      </div>
+    </div>
   )
 }
 

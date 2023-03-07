@@ -59,6 +59,7 @@
     .box-info{
         height: 40%;
         @include my-flex(space-between, column, normal);
+        flex-wrap: nowrap;
         background-color: $secondaryBack;
         padding: 10px;
         border-radius: 0 0 5px 5px;
