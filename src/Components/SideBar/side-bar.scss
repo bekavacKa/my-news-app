@@ -1,29 +1,26 @@
 @import '../../Assets/Scss/variables.scss';
 @import '../../Assets/Scss/mixins.scss';
 
-.side-bar-w{
-    // @include my-flex(flex-start, column, center);
-    .side-bar-box{
-        @include my-flex(space-between, column, center);
-        padding: 10px 5px;
-        height: 60px;
-        width: 70px;
-        border-radius: 5px;
-        color: $secondaryIconColor;
-        font-weight: 800;
-        margin: 5px 0;
-        .side-bar-icon{
-            font-size: 20px;
-        }
-        .side-bar-name{
-            font-size: 10px;
-        }
-        &.active{
-            background-color: $secondaryBack;
-            color: $primaryIconColor;
-        }
-        &:hover{
-            background-color: $secondaryBack;
-        }
+.side-bar-box{
+    @include my-flex(space-between, column, center);
+    padding: 10px 5px;
+    height: 60px;
+    width: 70px;
+    border-radius: 5px;
+    color: $secondaryIconColor;
+    font-weight: 800;
+    margin: 5px 0;
+    .side-bar-icon{
+        font-size: 20px;
+    }
+    .side-bar-name{
+        font-size: 10px;
+    }
+    &.active{
+        background-color: $secondaryBack;
+        color: $primaryIconColor;
+    }
+    &:hover{
+        background-color: $secondaryBack;
     }
 }
