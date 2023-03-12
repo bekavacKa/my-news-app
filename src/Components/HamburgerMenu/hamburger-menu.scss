@@ -1,0 +1,28 @@
+@import '../../Assets/Scss/variables.scss';
+@import '../../Assets/Scss/mixins.scss';
+
+.hamburger-menu-w{
+    background-color: $primaryBack;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    z-index: 90;
+    padding: 20px;
+    @include my-flex(flex-start, column, center);
+    .hamburger-close-w{
+        width: 100%;
+        text-align: right;
+        .hamburger-close{
+            font-size: 24px;
+        }
+    }
+    .hamburger-title{
+        padding: 40px 0;
+        font-size: 32px;
+    }
+    .hamburger-nav{
+        @include my-flex(center, row, center);
+    }
+}

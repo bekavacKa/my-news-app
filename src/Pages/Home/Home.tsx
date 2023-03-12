@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Outlet } from "react-router-dom";
+import HamburgerMenu from "../../Components/HamburgerMenu/HamburgerMenu";
 import Header from "../../Components/Header/Header";
 import NewsNotice from "../../Components/NewsNotice/NewsNotice";
 import SideBar from "../../Components/SideBar/SideBar";
@@ -21,6 +22,7 @@ function Home() {
   return (
     <>
       <NewsNotice />
+      {/* <HamburgerMenu /> */}
       <div className="home-w">
         <Header />
         <div className="home-content">
