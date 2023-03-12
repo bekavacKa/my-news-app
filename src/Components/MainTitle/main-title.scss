@@ -2,13 +2,31 @@
 @import '../../Assets/Scss/mixins.scss';
 
 .main-title-w{
-    color: $primaryIconColor;
-    @include my-flex(flex-start, row, center);
+    @include my-flex(space-between, row, center);
     .main-title-content{
-        font-weight: 900;
-        font-size: 32px;
-        &:nth-child(2){
-            color: $primaryFontColor;
+        color: $primaryIconColor;
+        @include my-flex(flex-start, row, center);
+        .content-word{
+            font-weight: 900;
+            font-size: 32px;
+            &:nth-child(2){
+                color: $primaryFontColor;
+            }
+        }
+    }
+    .main-title-menu{
+        display: none;
+        padding: 5px;
+        font-size: 24px;
+    }
+}
+
+@media screen and (max-width: 576px){
+    .main-title-w{
+        width: 100%;
+        margin: 10px 0;
+        .main-title-menu{
+            @include my-flex(space-between, row, center);
         }
     }
 }

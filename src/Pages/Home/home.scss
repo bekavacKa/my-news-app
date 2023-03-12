@@ -28,3 +28,25 @@
         }
     }
 }
+
+@media screen and (max-width: 576px){
+    .home-w{
+        width: 90%;
+        .home-content{
+            .home-sidebar{
+                display: none;
+            }
+            .home-main{
+                .main-content-title{
+                    display: none;
+                }
+                .main-content-cards{
+                    grid-template-columns: repeat(1, 1fr);
+                    .content-latest{
+                        display: none;
+                    }
+                }
+            }
+        }
+    }
+}

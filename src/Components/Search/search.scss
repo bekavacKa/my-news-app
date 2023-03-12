@@ -2,7 +2,8 @@
 @import '../../Assets/Scss/mixins.scss';
 
 .search-w{
-    width: 725px;
+    max-width: 725px;
+    width: 100%;
     border-radius: 10px;
     background-color: $secondaryBack;
     padding: 5px;
@@ -31,7 +32,25 @@
         }
     }
     .search-button{
-        // align-self: end;
         @include my-button($primaryIconColor, $secondaryBack);
+    }
+}
+
+@media screen and (max-width: 576px){
+    .search-w{
+        width: 100%;
+        min-height: 48px;
+        padding: 0;
+        margin: 15px 0;
+        .search-icon-input{
+            @include my-flex(flex-start, row, center);
+            .search-icon{
+                margin-left: 15px;
+                font-size: 15px;
+            }
+        }
+        .search-button{
+            display: none;
+        }
     }
 }
