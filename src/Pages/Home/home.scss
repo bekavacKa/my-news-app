@@ -25,6 +25,22 @@
                     grid-row: span 2;
                 }
             }
+            .home-top-nav{
+                display: none;
+                margin: 20px 0;
+                .top-nav-btn{
+                    font-size: 16px;
+                    font-weight: 600;
+                    color: $primaryFontColor;
+                    margin: 0 10px;
+                    &.active{
+                        color: $primaryIconColor;
+                        background-color: rgba(187, 30, 30, 0.1);
+                        padding: 10px 16px;
+                        border-radius: 20px;
+                    }
+                }
+            }
         }
     }
 }
@@ -45,6 +61,9 @@
                     .content-latest{
                         display: none;
                     }
+                }
+                .home-top-nav{
+                    @include my-flex(center, row, center);
                 }
             }
         }

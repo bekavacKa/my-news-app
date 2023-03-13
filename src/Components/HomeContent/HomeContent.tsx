@@ -7,6 +7,9 @@ import LatestNews from '../LatestNews/LatestNews';
 import { IData } from '../../Interfaces/DataInterface';
 import { ISearchedData } from '../../Interfaces/SearchedDataInterface';
 import { setSearchTerm } from '../../Redux/searchTermSlice';
+import { NavLink } from 'react-router-dom';
+import routes from '../../Config/routes';
+import TopNavigation from '../TopNavigation/TopNavigation';
 
 function HomeContent() {
 
@@ -84,12 +87,13 @@ function HomeContent() {
   }
 
   return (
-    <div className='homeContent-w'>
+    <>
+      <TopNavigation />
       <h2 className='main-content-title'>News</h2>
       <div className='main-content-cards'>
         {contentLayout()}
       </div>
-    </div>
+    </>
   )
 }
 

@@ -4,6 +4,7 @@ import favoriteNewsSlice from './favoriteNewsSlice';
 import loaderMiniSlice from './loaderMiniSlice';
 import loaderSlice from './loaderSlice';
 import searchTermSlice from './searchTermSlice';
+import hambMenuSlice from './hambMenuSlice';
 
 export const store = configureStore({
     reducer:{
@@ -12,5 +13,6 @@ export const store = configureStore({
         newsDataStore : dataSlice,
         searchTermStore : searchTermSlice,
         favoriteNewsStore : favoriteNewsSlice,
+        hambMenuStore : hambMenuSlice,
     }
 });
