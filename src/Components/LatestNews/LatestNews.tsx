@@ -39,15 +39,15 @@ const LatestNews : FC <ILatestNews> = ( ) => {
     
     const latestCardLayout = () => {
         return (
-            responseData &&
-            responseData.map((item, index) => {
-                return(
+            responseData ? responseData.map((item, index) => (
                     <div className='content-card' key={index}>
                         <p className='content-card-time'>{item.pub_date?.toString().slice(11,16)}</p>
                         <p className='content-card-title'>{item.headline?.main}</p>
                     </div>
-                )
-            })
+
+            )) : (
+                <p>failed to load news, please try again later</p>
+            )       
         )
     }
 

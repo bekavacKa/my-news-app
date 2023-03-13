@@ -4,48 +4,29 @@ import { IData } from '../../Interfaces/DataInterface';
 import { setLoader } from '../../Redux/loaderSlice';
 import MyNewsService from '../../Services/MyNewsService';
 import CardNews from '../CardNews/CardNews';
+import LatestNews from '../LatestNews/LatestNews';
+import TopNavigation from '../TopNavigation/TopNavigation';
 
 const LatestNewsContent : FC <IData> = ({ title }) => {
 
-  const dispatch = useDispatch();
-  const [responseData, setResponseData] = useState<IData[] | null>(null);
-  const [pageNum, setPageNum] = useState(0);
+  const categoryName: string = "latest news";
 
   useEffect(() => {
-    getLatestNews();
   },[])
 
   const contentLayout = () => {
     return (
-      responseData &&
-      responseData.map((card: IData, index: number) => {
-        return(
-        <div key={index} className='content-cards-news'>
-            <CardNews {...card} />
-        </div>
-        )
-      })
+      <div className='content-latest'>
+        <LatestNews />
+      </div>
     )
   };
 
-  const getLatestNews = (): void => {
-    dispatch(setLoader(true));
-    MyNewsService.getLatestData(pageNum)
-                .then(res => {
-                  console.log(res.data);
-                  setResponseData(res.data.results);
-                })
-                .catch(err => console.log(err))
-                .finally(() => dispatch(setLoader(false)));
-  }
-
-
   return (
     <>
-        <h2 className='content-title'>Latest</h2>
-        {
-            contentLayout()
-        }
+      <TopNavigation />
+      <h2 className="main-content-title">{categoryName}</h2>
+      {contentLayout()}
     </>
   )
 }
