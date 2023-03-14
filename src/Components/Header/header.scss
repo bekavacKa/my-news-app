@@ -9,7 +9,7 @@
 
 @media screen and (max-width: 576px){
     .header-w{
-        padding: 10px 0px;
+        padding: 5px 0px;
         @include my-flex(flex-start, column, normal);
         border: none;
     }

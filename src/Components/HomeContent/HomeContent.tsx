@@ -67,7 +67,7 @@ function HomeContent() {
     dispatch(setLoader(true));
     MyNewsService.getCategoryData(categoryName)
                 .then(res => {
-                  // console.log(res.data);
+                  console.log(res.data.results);
                   setResponseData(res.data.results);
                 })
                 .catch(err => console.log(err))
