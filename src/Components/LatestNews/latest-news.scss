@@ -16,6 +16,8 @@
         @include my-flex(flex-start, row, center);
         padding: 0 10px 15px;
         box-shadow: 0 4px 5px -2px gray;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
         .news-header-dot{
             height: 18px;
             width: 18px;
