@@ -2,5 +2,28 @@
 @import '../../Assets/Scss/mixins.scss';
 
 .not-found-w{
-    background-color: blue;
+    background-color: $primaryBack;
+    width: 100vw;
+    height: 100vh;
+    @include my-flex(center, column, center);
+    .not-found-info{
+        font-size: 3rem;
+        font-weight: 800;
+    }
+    .not-found-btn{
+        margin: 30px 10px;
+        @include my-flex(center, row, center);
+        @include my-button($primaryIconColor, $secondaryBack);
+        .arrow{
+            margin-left: 10px;
+        }
+    }
+}
+
+@media screen and (max-width: 576px){
+    .not-found-w{
+        .not-found-info{
+            font-size: 2rem;
+        }
+    }
 }
