@@ -45,7 +45,7 @@
     }
 }
 
-@media screen and (max-width: 576px){
+@include my-responsive(small){
     .home-w{
         width: 90%;
         .home-content{

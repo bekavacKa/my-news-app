@@ -21,7 +21,7 @@
     }
 }
 
-@media screen and (max-width: 576px){
+@include my-responsive(small){
     .main-title-w{
         width: 100%;
         margin: 10px 0;

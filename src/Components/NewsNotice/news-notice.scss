@@ -23,7 +23,7 @@
     }
 }
 
-@media screen and (max-width: 576px){
+@include my-responsive(small){
     .news-notice-w{
         display: none;
     }
