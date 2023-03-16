@@ -20,7 +20,7 @@
     }
 }
 
-@media screen and (max-width: 576px){
+@include my-responsive(small){
     .not-found-w{
         .not-found-info{
             font-size: 2rem;

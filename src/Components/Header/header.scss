@@ -7,7 +7,7 @@
     border-bottom: 1px solid #97979741;
 } 
 
-@media screen and (max-width: 576px){
+@include my-responsive(small){
     .header-w{
         padding: 5px 0px;
         @include my-flex(flex-start, column, normal);

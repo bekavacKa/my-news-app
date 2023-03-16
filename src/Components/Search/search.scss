@@ -36,7 +36,7 @@
     }
 }
 
-@media screen and (max-width: 576px){
+@include my-responsive(small){
     .search-w{
         width: 100%;
         min-height: 48px;

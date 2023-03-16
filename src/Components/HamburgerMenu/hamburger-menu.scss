@@ -33,7 +33,7 @@
     }
 }
 
-@media screen and (max-width: 576px){
+@include my-responsive(small){
     .hamburger-menu-w{
         @include my-flex(flex-start, column, center);
     }
