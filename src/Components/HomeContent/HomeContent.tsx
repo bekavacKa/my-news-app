@@ -21,6 +21,7 @@ function HomeContent() {
 
   useEffect(() => {
       getData();
+      // getNewsApi();
   },[])
 
   useEffect(() => {
@@ -63,6 +64,7 @@ function HomeContent() {
     )
   };
 
+  // ? NewYorkAPI
   const getData = (): void => {
     dispatch(setLoader(true));
     MyNewsService.getCategoryData(categoryName)
@@ -74,12 +76,24 @@ function HomeContent() {
                 .finally(() => dispatch(setLoader(false)));
   }
 
+  // ? NewsAPI
+  //   const getNewsApi = (): void => {
+  //   dispatch(setLoader(true));
+  //   MyNewsService.getDataNewsApi()
+  //               .then(res => {
+  //                 console.log(res.data);
+  //                 setResponseData(res.data.articles);
+  //               })
+  //               .catch(err => console.log(err))
+  //               .finally(() => dispatch(setLoader(false)));
+  // }
+
   const searchData = (): void => {
     dispatch(setLoader(true));
     MyNewsService.getSearchedData(searchTerm)
                 .then(res => {
                   // console.log(res.data);
-                  // console.log(res.data.response.docs);
+                  console.log(res.data.response.docs);
                   setSearchedData(res.data.response.docs);
                 })
                 .catch(err => console.log(err))
@@ -91,7 +105,9 @@ function HomeContent() {
       <TopNavigation />
       <h2 className='main-content-title'>News</h2>
       <div className='main-content-cards'>
-        {contentLayout()}
+        {searchedData && searchTerm.length > 0 ? searchedContentLayout()
+          : contentLayout()
+        }
       </div>
     </>
   )
