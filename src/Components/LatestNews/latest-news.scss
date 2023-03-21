@@ -65,6 +65,14 @@
                 margin: 5px 0;
             }
         }
+        .latest-news-error{
+            text-align: center;
+            padding: 35px;
+            line-height: 25px;
+            text-transform: uppercase;
+            font-weight: 700;
+            margin: auto;
+        }
     }
     .latest-news-footer{
         color: $secondaryFontColor;
@@ -79,8 +87,22 @@
                 margin: 0 5px;
             }
             &:hover{
-                transform: scale(1.02);
+                transform: scale(1.01);
             }
+            .fotter-refresh{
+                margin: 0 5px;
+                font-size: 20px;
+            }
+        }
+    }
+}
+
+@include my-responsive(small){
+    .latest-news-w{
+        max-height: 600px;
+        margin-bottom: 50px;
+        .latest-news-content{
+            max-height: 500px;
         }
     }
 }

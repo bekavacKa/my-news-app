@@ -8,7 +8,7 @@ import "./favorite.scss";
 function Favorite() {
   const { favoriteNews } = useSelector((state: any) => state.favoriteNewsStore);
   const pageTitle: string = "favorite";
-  const emptyFavoriteText: string = "Favorite news section is empty, mark news with a heart so you can find it here";
+  const emptyFavoriteText: string = "Favorite news section is empty, mark news with heart so you can find it here";
   const emptyFavoriteBtn: string = "Go to Home";
 
   const contentLayout = () => {

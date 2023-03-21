@@ -6,7 +6,7 @@ import { setLoader } from "../../Redux/loaderSlice";
 import MyNewsService from "../../Services/MyNewsService";
 
 function General() {
-  const categoryName: string = "home";
+  const categoryName: string = "world";
   const dispatch = useDispatch();
   const [responseData, setResponseData] = useState<IData[] | null>(null);
 
