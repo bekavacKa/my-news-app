@@ -42,7 +42,8 @@
             background-color: $secondaryBack;
             padding: 1px;
             font-weight: 700;
-            color: red;
+            color: $primaryIconColor;
+            box-shadow: #bb1e1ea1 0px 0px 5px .5px;
             margin: 15px 15px;
             .heart{
                 transition: $transition;
