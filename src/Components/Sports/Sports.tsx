@@ -19,6 +19,7 @@ function Sports() {
       responseData &&
       responseData.map((card: IData, index: number) => {
         return (
+          card.section && card.title &&
           <div key={index} className="content-cards-news">
             <CardNews {...card} />
           </div>

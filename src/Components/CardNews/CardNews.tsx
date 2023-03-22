@@ -23,13 +23,13 @@ const CardNews : FC <IData> = (card) => {
   
 
   const handleFavorite = (e: React.MouseEvent<SVGElement, MouseEvent>) => {
-    console.log("dela card", card);
+    // console.log("dela card", card);
     dispatch(setFavoriteNews(card));
     setFavorite(!favorite);
   };
 
   const deleteFavorite = (e: React.MouseEvent<SVGElement, MouseEvent>) => {
-    console.log("delete", card);
+    // console.log("delete", card);
     dispatch(removeFavoriteNews(card))
   }
 

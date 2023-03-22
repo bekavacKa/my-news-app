@@ -29,7 +29,8 @@ const LatestNews: FC<ILatestNews> = () => {
     const element = latestNewsRef.current;
     const handleScroll = () => {
       if (element.scrollHeight - element.scrollTop === element.clientHeight) {
-        setPageNum(pageNum + 1);
+        setPageNum(prev => prev + 1);
+        console.log(pageNum)
         getLatestNews();
       }
     };
