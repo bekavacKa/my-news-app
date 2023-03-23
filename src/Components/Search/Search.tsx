@@ -19,22 +19,23 @@ function Search() {
     term.length <= 1 && dispatch(setSearchTerm(""));
   }
 
-  const handleSearch = () => {
+  const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
     console.log("handle",term);
     dispatch(setSearchTerm(term));
     navigate(routes.HOME.url)
   }
 
   return (
-    <div className='search-w'>
+    <form className='search-w' onSubmit={(e: React.FormEvent<HTMLFormElement>) => handleSearch(e)}>
       <div className='search-icon-input'>
         <AiOutlineSearch className='search-icon' />
         <input className='search-input' type="search" placeholder='Search news' onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleChange(e)} />
       </div>
-      <button className='search-button' onClick={handleSearch}>
+      <button className='search-button' type='submit'>
         search
       </button>
-    </div>
+    </form>
   )
 }
 
