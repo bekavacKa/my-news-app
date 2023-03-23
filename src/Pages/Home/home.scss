@@ -24,6 +24,12 @@
                 .content-latest{
                     grid-row: span 2;
                 }
+                .notFoundSearch{
+                    margin: 30px;
+                    color: $primaryIconColor;
+                    font-size: 1.2rem;
+                    font-weight: 700;
+                }
             }
             .home-top-nav{
                 display: none;

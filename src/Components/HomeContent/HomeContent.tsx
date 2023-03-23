@@ -11,6 +11,7 @@ import { FaRegHeart, FaHeart} from 'react-icons/fa';
 import { NavLink } from 'react-router-dom';
 import routes from '../../Config/routes';
 import TopNavigation from '../TopNavigation/TopNavigation';
+import imageNotFound from '../../Assets/Images/not_found_image.png';
 
 function HomeContent() {
 
@@ -20,19 +21,13 @@ function HomeContent() {
   const [responseData, setResponseData] = useState<IData[] | null>(null);
   const [searchedData, setSearchedData] = useState<ISearchedData[] | null>(null);
 
-  const [favorite, setFavorite] = useState(false);
-  const { favoriteNews } = useSelector((state: any) => state.favoriteNewsStore);
   const baseURL: string = 'https://www.nytimes.com/';
-  const titleLimit: number = 100;
+  const titleLimit: number = 80;
+  const notFoundMsg: string = `Sorry, we didn't find anything for "${searchTerm}".`;
 
   useEffect(() => {
-      getData();
-      // getNewsApi();
-  },[])
-
-  useEffect(() => {
-    searchTerm && searchTerm.length > 0 ? 
-    searchData() : dispatch(setSearchTerm(""))
+    searchTerm && searchTerm.length > 0 ?  
+    searchData() : 
     getData();
   },[searchTerm])
 
@@ -59,40 +54,30 @@ function HomeContent() {
     )
   };
 
-
-  // TODO ZAVRŠITI
   const searchedContentLayout = () => {
     return (
-      searchedData?.map((card: ISearchedData, index) => {
-        return(
+      searchedData && searchedData.length > 0 ? (
+        searchedData.map((card: ISearchedData, index) => (
           <div key={index} className='content-cards-news'>
             <div className='card-news-box'>
-              <div className='box-image' style={{backgroundImage: ` url(${card.multimedia && card.multimedia.length > 0 && baseURL+ card.multimedia[0].url})`}}>
-                <p className='ad-holdere'>AD</p>
-                {
-                  favorite ?
-                  <p className='favorite-holder'>
-                    <FaHeart className='heart'/>
-                  </p>
-                  :
-                  <p className='favorite-holder'>
-                    <FaRegHeart className='heart'/>
-                  </p>
-                }
+              <div className='box-image' style={{backgroundImage: ` url(${card.multimedia && card.multimedia.length > 0 ? baseURL+ card.multimedia[0].url : imageNotFound})`}}>
               </div>
               <div className='box-info'>
                 <div className='info-top'>
                   <p className='info-top-cat'>{card.section_name}</p>
                   <p className='info-top-title'>
-                    {card.abstract.length > titleLimit ? card.abstract.slice(0, titleLimit) : card.abstract }
+                    {card.abstract.length > titleLimit ? card.abstract.slice(0, titleLimit)+'...' : card.abstract }
                     </p>
                 </div>
-                <p className='box-info-publisher'>autor</p>
+                <div className='box-info-publisher'>
+                  <p>{card.byline.original}</p>
+                </div>
               </div>
             </div>
           </div>
-        )
-      })
+        ))) : (
+        <p className='notFoundSearch'>{notFoundMsg}</p>
+      )
     )
   };
 
