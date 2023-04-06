@@ -1,6 +1,5 @@
 import React, { FC, useState, useEffect } from 'react';
 import './card-news.scss';
-import testImage from '../../Assets/Images/news.jpg';
 import { FaRegHeart, FaHeart} from 'react-icons/fa';
 import { IData } from '../../Interfaces/DataInterface';
 import { useDispatch, useSelector } from 'react-redux';
@@ -11,6 +10,7 @@ const CardNews : FC <IData> = (card) => {
   const dispatch = useDispatch();
   const [favorite, setFavorite] = useState(false);
   const { favoriteNews } = useSelector((state: any) => state.favoriteNewsStore);
+  const adSelector: string = 'business';
 
   useEffect(() => {
     if(favoriteNews.find((item:any) => (item.uri === card.uri)) === undefined){
@@ -23,21 +23,21 @@ const CardNews : FC <IData> = (card) => {
   
 
   const handleFavorite = (e: React.MouseEvent<SVGElement, MouseEvent>) => {
-    // console.log("dela card", card);
     dispatch(setFavoriteNews(card));
     setFavorite(!favorite);
   };
 
   const deleteFavorite = (e: React.MouseEvent<SVGElement, MouseEvent>) => {
-    // console.log("delete", card);
     dispatch(removeFavoriteNews(card))
   }
 
   const cardNewsLayout = () => {
     return (
-      <>
-        <div className='box-image' style={{backgroundImage: ` url(${card.multimedia && card.multimedia[0].url})`}}>
-          <p className='ad-holdere'>AD</p>
+      <a href={card.url} target='_blank' rel="noreferrer">
+        <div className={`box-image ${card.section === adSelector ? 'include-ad' : ''} `} style={{backgroundImage: ` url(${card.multimedia && card.multimedia[0].url})`}}>
+          {card.section === adSelector && (
+            <p className='ad-holdere'>AD</p>
+          )}
           {
             favorite ?
             <p className='favorite-holder'>
@@ -56,7 +56,7 @@ const CardNews : FC <IData> = (card) => {
           </div>
           <p className='box-info-publisher'>{card.byline}</p>
         </div>
-      </>
+      </a>
     )
   }
 
