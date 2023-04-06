@@ -21,7 +21,8 @@
         text-align: right;
         filter: brightness(80%);
         transition: $transition;
-        @include my-flex(space-between, row, normal);
+        @include my-flex(flex-end, row, normal);
+        display: flex;
         .ad-holdere{
             @include my-flex(center, column, center);
             height: 25px;
@@ -61,6 +62,9 @@
                 color: gray;
             }
         }
+    }
+    .include-ad{
+        @include my-flex(space-between, row, normal);
     }
     .box-info{
         height: 40%;

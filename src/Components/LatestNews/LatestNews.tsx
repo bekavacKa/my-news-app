@@ -16,6 +16,8 @@ const LatestNews: FC<ILatestNews> = () => {
   const [pageNum, setPageNum] = useState(0);
   const [resError, setResError] = useState(false);
   const latestError: string = 'failed to load news, please try again later';
+  const seeMoreBTN: string = 'See all news';
+  const refreshBTN: string = 'Refresh';
 
   useEffect(() => {
     getLatestNews();
@@ -23,14 +25,13 @@ const LatestNews: FC<ILatestNews> = () => {
 
   useEffect(() => {
     if (!latestNewsRef.current) {
-      // console.log("problem");
       return;
     }
     const element = latestNewsRef.current;
     const handleScroll = () => {
       if (element.scrollHeight - element.scrollTop === element.clientHeight) {
         setPageNum(prev => prev + 1);
-        console.log(pageNum)
+        // console.log(pageNum)
         getLatestNews();
       }
     };
@@ -43,12 +44,14 @@ const LatestNews: FC<ILatestNews> = () => {
   const latestCardLayout = () => {
     return responseData && responseData.length > 0 ? (
       responseData.map((item, index) => (
-        <div className="content-card" key={index}>
-          <p className="content-card-time">
-            {item.pub_date?.toString().slice(11, 16)}
-          </p>
-          <p className="content-card-title">{item.headline?.main}</p>
-        </div>
+        <a href={item.web_url} target="_blank" rel="noreferrer">
+          <div className="content-card" key={index}>
+            <p className="content-card-time">
+              {item.pub_date?.toString().slice(11, 16)}
+            </p>
+            <p className="content-card-title">{item.headline?.main}</p>
+          </div>
+        </a>
       ))
     ) : (
       resError && <p className="latest-news-error">{latestError}</p>
@@ -59,11 +62,12 @@ const LatestNews: FC<ILatestNews> = () => {
     dispatch(setMiniLoader(true));
     MyNewsService.getLatestData(pageNum)
       .then((res) => {
+        console.log(res.data.response.docs)
         setResponseData([...responseData, ...res.data.response.docs]);
         setResError(false);
       })
       .catch((err) => {
-        console.log(err);
+        // console.log(err);
         setResError(true);
       })
       .finally(() => dispatch(setMiniLoader(false)));
@@ -87,13 +91,13 @@ const LatestNews: FC<ILatestNews> = () => {
         {responseData && responseData.length > 0 ? (
           <Link to={`/latest-news`} className="latest-news-footer">
             <p className="footer-btn">
-              See all news <FaAngleRight className="fotter-arrow" />
+              {seeMoreBTN} <FaAngleRight className="fotter-arrow" />
             </p>
           </Link>
         ) : (
           <div className="latest-news-footer">
             <p className="footer-btn" onClick={handleRefresh}>
-              Refresh <BiRefresh className="fotter-refresh" />
+              {refreshBTN} <BiRefresh className="fotter-refresh" />
             </p>
           </div>
         )}

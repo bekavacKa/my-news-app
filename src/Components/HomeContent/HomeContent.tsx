@@ -6,10 +6,6 @@ import CardNews from '../CardNews/CardNews';
 import LatestNews from '../LatestNews/LatestNews';
 import { IData } from '../../Interfaces/DataInterface';
 import { ISearchedData } from '../../Interfaces/SearchedDataInterface';
-import { setSearchTerm } from '../../Redux/searchTermSlice';
-import { FaRegHeart, FaHeart} from 'react-icons/fa';
-import { NavLink } from 'react-router-dom';
-import routes from '../../Config/routes';
 import TopNavigation from '../TopNavigation/TopNavigation';
 import imageNotFound from '../../Assets/Images/not_found_image.png';
 
@@ -86,7 +82,7 @@ function HomeContent() {
     dispatch(setLoader(true));
     MyNewsService.getCategoryData(categoryName)
                 .then(res => {
-                  console.log(res.data.results);
+                  // console.log(res.data.results);
                   setResponseData(res.data.results);
                 })
                 .catch(err => console.log(err))
@@ -109,8 +105,7 @@ function HomeContent() {
     dispatch(setLoader(true));
     MyNewsService.getSearchedData(searchTerm)
                 .then(res => {
-                  // console.log(res.data);
-                  console.log(res.data.response.docs);
+                  // console.log(res.data.response.docs);
                   setSearchedData(res.data.response.docs);
                 })
                 .catch(err => console.log(err))

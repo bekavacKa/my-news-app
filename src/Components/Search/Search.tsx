@@ -11,17 +11,15 @@ function Search() {
   const [term, setTerm] = useState("");
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const searchBTN: string = 'search';
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    // console.log(e.target.value);
     setTerm(e.target.value);
-    // console.log(term);
     term.length <= 1 && dispatch(setSearchTerm(""));
   }
 
   const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log("handle",term);
     dispatch(setSearchTerm(term));
     navigate(routes.HOME.url)
   }
@@ -33,7 +31,7 @@ function Search() {
         <input className='search-input' type="search" placeholder='Search news' onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleChange(e)} />
       </div>
       <button className='search-button' type='submit'>
-        search
+        {searchBTN}
       </button>
     </form>
   )

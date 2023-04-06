@@ -32,7 +32,6 @@ function General() {
     dispatch(setLoader(true));
     MyNewsService.getCategoryData(categoryName)
       .then((res) => {
-        console.log(res.data);
         setResponseData(res.data.results);
       })
       .catch((err) => console.log(err))

@@ -10,7 +10,6 @@ function MainTitle() {
   const dispatch = useDispatch();
 
   const handleOpenMenu = (): void => {
-    console.log("test");
     dispatch(setHambMenu(true));
   }
 
