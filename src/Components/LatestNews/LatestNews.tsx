@@ -8,6 +8,7 @@ import { setMiniLoader } from "../../Redux/loaderMiniSlice";
 import MyNewsService from "../../Services/MyNewsService";
 import LoaderMini from "../LoaderMini/LoaderMini";
 import "./latest-news.scss";
+import { debounce } from "lodash";
 
 const LatestNews: FC<ILatestNews> = () => {
   const dispatch = useDispatch();
@@ -18,34 +19,39 @@ const LatestNews: FC<ILatestNews> = () => {
   const latestError: string = 'failed to load news, please try again later';
   const seeMoreBTN: string = 'See all news';
   const refreshBTN: string = 'Refresh';
+  const element = latestNewsRef.current;
 
   useEffect(() => {
     getLatestNews();
+    console.log(window.scrollY);
   }, []);
 
   useEffect(() => {
+    // ! Jos poboljsati, palit loader odmah a ne u debounceu
+    console.log(responseData);
     if (!latestNewsRef.current) {
       return;
     }
-    const element = latestNewsRef.current;
-    const handleScroll = () => {
-      if (element.scrollHeight - element.scrollTop === element.clientHeight) {
-        setPageNum(prev => prev + 1);
-        // console.log(pageNum)
-        getLatestNews();
-      }
-    };
-    element.addEventListener("scroll", handleScroll);
-    return () => {
-      element.removeEventListener("scroll", handleScroll);
-    };
+    if(element){
+      const handleScroll = debounce(() => {
+        if (Math.round(element.scrollHeight) - Math.round(element.scrollTop) === element.clientHeight) {
+          setPageNum(prev => prev + 1);
+          getLatestNews();
+        }
+      }, 2000);
+      element.addEventListener("scroll", handleScroll);
+      return () => {
+        element.removeEventListener("scroll", handleScroll);
+        handleScroll.cancel();
+      };
+    }
   }, [pageNum, responseData, latestNewsRef]);
 
   const latestCardLayout = () => {
     return responseData && responseData.length > 0 ? (
       responseData.map((item, index) => (
-        <a href={item.web_url} target="_blank" rel="noreferrer">
-          <div className="content-card" key={index}>
+        <a href={item.web_url} target="_blank" rel="noreferrer" key={index}>
+          <div className="content-card">
             <p className="content-card-time">
               {item.pub_date?.toString().slice(11, 16)}
             </p>
@@ -62,12 +68,10 @@ const LatestNews: FC<ILatestNews> = () => {
     dispatch(setMiniLoader(true));
     MyNewsService.getLatestData(pageNum)
       .then((res) => {
-        console.log(res.data.response.docs)
         setResponseData([...responseData, ...res.data.response.docs]);
         setResError(false);
       })
       .catch((err) => {
-        // console.log(err);
         setResError(true);
       })
       .finally(() => dispatch(setMiniLoader(false)));
