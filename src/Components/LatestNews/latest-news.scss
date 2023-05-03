@@ -83,8 +83,8 @@
             @include my-flex(flex-start, row, center);
             padding: 10px;
             transition: $transition;
+            color: $secondaryFontColor;
             .fotter-arrow{
-                color: $primaryFontColor;
                 margin: 0 5px;
             }
             &:hover{
@@ -93,6 +93,15 @@
             .fotter-refresh{
                 margin: 0 5px;
                 font-size: 20px;
+            }
+        }
+        .load-more{
+            padding: 5px;
+            text-align: center;
+            display: none;
+            .load-more-btn{
+                @include my-button($primaryIconColor, $secondaryBack);
+                font-size: 12px;
             }
         }
     }
@@ -104,6 +113,14 @@
         margin-bottom: 50px;
         .latest-news-content{
             max-height: 500px;
+        }
+        .latest-news-footer{
+            .footer-btn{
+                display: none;
+            }
+            .load-more{
+                display: block;
+            }
         }
     }
 }

@@ -18,34 +18,14 @@ const LatestNews: FC<ILatestNews> = () => {
   const [resError, setResError] = useState(false);
   const latestError: string = 'failed to load news, please try again later';
   const seeMoreBTN: string = 'See all news';
+  const loadMoreBTN: string = 'Load more';
   const refreshBTN: string = 'Refresh';
-  const element = latestNewsRef.current;
+  const [debounceTime, setDebounceTime] = useState(0);
 
   useEffect(() => {
     getLatestNews();
-    console.log(window.scrollY);
+    setDebounceTime(3000);
   }, []);
-
-  useEffect(() => {
-    // ! Jos poboljsati, palit loader odmah a ne u debounceu
-    console.log(responseData);
-    if (!latestNewsRef.current) {
-      return;
-    }
-    if(element){
-      const handleScroll = debounce(() => {
-        if (Math.round(element.scrollHeight) - Math.round(element.scrollTop) === element.clientHeight) {
-          setPageNum(prev => prev + 1);
-          getLatestNews();
-        }
-      }, 2000);
-      element.addEventListener("scroll", handleScroll);
-      return () => {
-        element.removeEventListener("scroll", handleScroll);
-        handleScroll.cancel();
-      };
-    }
-  }, [pageNum, responseData, latestNewsRef]);
 
   const latestCardLayout = () => {
     return responseData && responseData.length > 0 ? (
@@ -64,7 +44,7 @@ const LatestNews: FC<ILatestNews> = () => {
     );
   };
 
-  const getLatestNews = (): void => {
+  const getLatestNews = debounce((): void => {
     dispatch(setMiniLoader(true));
     MyNewsService.getLatestData(pageNum)
       .then((res) => {
@@ -75,12 +55,28 @@ const LatestNews: FC<ILatestNews> = () => {
         setResError(true);
       })
       .finally(() => dispatch(setMiniLoader(false)));
+  }, debounceTime);
+
+  const handleOnScroll = (): void => {
+    if(latestNewsRef.current){
+      if (Math.round(latestNewsRef.current.scrollHeight) - Math.round(latestNewsRef.current.scrollTop) === latestNewsRef.current.clientHeight) {
+        dispatch(setMiniLoader(true));
+        setPageNum(prev => prev + 1);
+        getLatestNews();
+      }
+    }
   };
+
+  const handleLoadMore = (): void => {
+    dispatch(setMiniLoader(true));
+    setPageNum(prev => prev + 1);
+    getLatestNews();
+  }
 
   const handleRefresh = () => {
     setPageNum(0);
     getLatestNews();
-  }
+  };
 
   return (
     <div className="latest-news-w">
@@ -88,16 +84,23 @@ const LatestNews: FC<ILatestNews> = () => {
         <div className="news-header-dot"></div>
         <h4 className="news-header-title">Latest News</h4>
       </div>
-      <div ref={latestNewsRef} className="latest-news-content">
+      <div ref={latestNewsRef} onScroll={handleOnScroll} className="latest-news-content">
         {latestCardLayout()}
         <LoaderMini />
       </div>
         {responseData && responseData.length > 0 ? (
-          <Link to={`/latest-news`} className="latest-news-footer">
-            <p className="footer-btn">
-              {seeMoreBTN} <FaAngleRight className="fotter-arrow" />
-            </p>
-          </Link>
+          <div className="latest-news-footer">
+            <Link to={`/latest-news`}>
+              <p className="footer-btn">
+                {seeMoreBTN} <FaAngleRight className="fotter-arrow" />
+              </p>
+            </Link>
+            <div className="load-more">
+              <button className="load-more-btn" onClick={handleLoadMore}>
+                {loadMoreBTN}
+              </button>
+            </div>
+          </div>
         ) : (
           <div className="latest-news-footer">
             <p className="footer-btn" onClick={handleRefresh}>
