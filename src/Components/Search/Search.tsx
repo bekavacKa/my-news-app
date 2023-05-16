@@ -5,6 +5,7 @@ import { useDispatch } from 'react-redux';
 import { setSearchTerm } from '../../Redux/searchTermSlice';
 import { useNavigate } from "react-router-dom";
 import routes from '../../Config/routes';
+import { setHambMenu } from '../../Redux/hambMenuSlice';
 
 function Search() {
 
@@ -21,7 +22,8 @@ function Search() {
   const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     dispatch(setSearchTerm(term));
-    navigate(routes.HOME.url)
+    navigate(routes.HOME.url);
+    dispatch(setHambMenu(false));
   }
 
   return (

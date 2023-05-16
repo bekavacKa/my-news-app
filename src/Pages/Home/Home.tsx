@@ -7,6 +7,7 @@ import NewsNotice from "../../Components/NewsNotice/NewsNotice";
 import SideBar from "../../Components/SideBar/SideBar";
 import { setFromLocalStorage } from "../../Redux/favoriteNewsSlice";
 import "./home.scss";
+import Footer from "../../Components/Footer/Footer";
 
 function Home() {
   const dispatch = useDispatch();
@@ -38,6 +39,7 @@ function Home() {
           </div>
         </div>
       </div>
+      <Footer />
     </>
   );
 }
