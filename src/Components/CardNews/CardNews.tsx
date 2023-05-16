@@ -23,11 +23,13 @@ const CardNews : FC <IData> = (card) => {
   
 
   const handleFavorite = (e: React.MouseEvent<SVGElement, MouseEvent>) => {
+    e.preventDefault();
     dispatch(setFavoriteNews(card));
     setFavorite(!favorite);
   };
 
   const deleteFavorite = (e: React.MouseEvent<SVGElement, MouseEvent>) => {
+    e.preventDefault();
     dispatch(removeFavoriteNews(card))
   }
 
@@ -62,11 +64,13 @@ const CardNews : FC <IData> = (card) => {
 
   const breakingCardLayout = () => {
     return (
-      <div className='news-breaking'>
-        <p className='breaking-badge'>Breaking</p>
-        <h3 className='breaking-title'>{card.title}</h3>
-        <p className='breaking-publisher'>{card.byline}</p>
-      </div>
+      <a href={card.url} target='_blank' rel="noreferrer">
+        <div className='news-breaking'>
+          <p className='breaking-badge'>Breaking</p>
+          <h3 className='breaking-title'>{card.title}</h3>
+          <p className='breaking-publisher'>{card.byline}</p>
+        </div>
+      </a>
     )
   }
 

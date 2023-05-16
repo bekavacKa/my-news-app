@@ -1,0 +1,9 @@
+@import '../../Assets/Scss/variables.scss';
+@import '../../Assets/Scss/mixins.scss';
+
+.footer-w{
+    padding: 20px;
+    margin-top: 50px;
+    background-color: $secondaryBack;
+    @include my-flex(center, column, center);
+}
