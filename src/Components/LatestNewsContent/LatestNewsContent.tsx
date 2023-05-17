@@ -1,9 +1,5 @@
-import React, { FC, useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { FC, useEffect } from 'react';
 import { IData } from '../../Interfaces/DataInterface';
-import { setLoader } from '../../Redux/loaderSlice';
-import MyNewsService from '../../Services/MyNewsService';
-import CardNews from '../CardNews/CardNews';
 import LatestNews from '../LatestNews/LatestNews';
 import TopNavigation from '../TopNavigation/TopNavigation';
 

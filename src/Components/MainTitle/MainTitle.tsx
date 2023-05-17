@@ -3,6 +3,8 @@ import './main-title.scss';
 import { IoMdMenu } from "react-icons/io";
 import { useDispatch, useSelector } from 'react-redux';
 import { setHambMenu } from '../../Redux/hambMenuSlice';
+import { Link } from 'react-router-dom';
+import routes from '../../Config/routes';
 
 function MainTitle() {
 
@@ -15,10 +17,10 @@ function MainTitle() {
 
   return (
     <div className='main-title-w'>
-      <div className='main-title-content'>
+      <Link to={routes.HOME.url} className='main-title-content'>
         <h1 className='content-word'>My</h1>
         <h1 className='content-word'>News</h1>
-      </div>
+      </Link>
       {!isHambMenuOpen &&
       <div className='main-title-menu' onClick={handleOpenMenu}>
         <IoMdMenu />

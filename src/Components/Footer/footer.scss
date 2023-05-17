@@ -6,4 +6,14 @@
     margin-top: 50px;
     background-color: $secondaryBack;
     @include my-flex(center, column, center);
+    .footer-author{
+        margin: 10px 0;
+        font-size: .8rem;
+        letter-spacing: .2rem;
+        color: $primaryIconColor;
+        font-weight: 600;
+    }
+    .footer-year{
+        font-size: .7rem;
+    }
 }
