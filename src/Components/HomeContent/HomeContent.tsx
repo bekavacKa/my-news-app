@@ -115,7 +115,7 @@ function HomeContent() {
   return (
     <>
       <TopNavigation />
-      <h2 className='main-content-title'>News</h2>
+      <h2 className='main-content-title hide-title'>News</h2>
       <div className='main-content-cards'>
         {searchedData && searchTerm.length > 0 ? searchedContentLayout()
           : contentLayout()

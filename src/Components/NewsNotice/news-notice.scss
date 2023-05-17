@@ -7,7 +7,7 @@
     .news-notice-content{
         @include my-flex(space-between, row, center);
         color: $secondaryBack;
-        width: 80%;
+        width: 85%;
         margin: 0 auto;
         .content-buttons{
             button{
@@ -26,5 +26,30 @@
 @include my-responsive(small){
     .news-notice-w{
         display: none;
+    }
+}
+
+@include my-responsive(medium){
+    .news-notice-w{
+        display: none;
+    }
+}
+
+@include my-responsive(large){
+    .news-notice-w{
+        font-size: .8rem;
+        .news-notice-content{
+            width: 90%;
+            .content-buttons{
+                button{
+                    &:first-child{
+                        font-size: .7rem;
+                    }
+                    &:nth-child(2){
+                        font-size: .7rem;
+                    }
+                }
+            }
+        }
     }
 }
